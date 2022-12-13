@@ -10,8 +10,31 @@
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+        <style>
+            .alert {
+          padding: 20px;
+          background-color: #04AA6D;
+          color: white;
+        }
+        .closebtn {
+          margin-left: 15px;
+          color: white;
+          p {text-align: center;}  
+          font-weight: bold;
+          float: right;
+          font-size: 22px;
+          line-height: 20px;
+          cursor: pointer;
+          transition: 0.3s;
+        }
+
+        .closebtn:hover {
+          color: black;
+        }
+        </style>
     </head>
     <body>
+
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container px-5">
@@ -28,6 +51,10 @@
             </div>
         </nav>
         <!-- Page Content-->
+        <div class="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            Disclaimer: All games are not made by me. Click <a href="https://sharkdevelopmentinc.github.io/credit.html">here</a> for credits to all games shown!
+        </div>
         <div class="container px-4 px-lg-5">
             <!-- Heading Row-->
             <div class="row gx-4 gx-lg-5 align-items-center my-5">
