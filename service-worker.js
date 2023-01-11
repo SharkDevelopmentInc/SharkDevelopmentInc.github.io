@@ -78,7 +78,7 @@ const addResourcesToCache = async (resources) => {
       cacheFirst({
         request: event.request,
         preloadResponsePromise: event.preloadResponse,
-        fallbackUrl: '/gallery/myLittleVader.jpg',
+        fallbackUrl: '/index.html',
       })
     );
   });
