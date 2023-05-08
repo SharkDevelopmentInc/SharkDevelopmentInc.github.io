@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Mr. Motin's Time</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    .not-active {
+      pointer-events: none;
+      cursor: default;
+      text-decoration: none;
+      color: black;
+    }
+  </style>
+</head>
+
+<body>
+  <div id='clock'>
+    <center>
+      <a href="https://time.is/Chamblee" id="time_is_link" rel="nofollow"></a>
+      <span id="Chamblee_z161"></span>
+      <script src="//widget.time.is/t.js"></script>
+      <script>
+        time_is_widget.init({Chamblee_z161: {time_format: "12hours:minutes:seconds"}});
+      </script>
+      <br>
+      <span style="font-size:200px">⇦</span>
+      <br>
+      <span>Focus on Mr. Motin</span>
+    </center>
+  </div>
+
+<button type="button" class="backHome" onclick='sendBackHome()'>Mr. Branta</button>
+
+  
+  
+
+  <script>
+    function sendBackHome() {
+      window.location.href="http://sharkdevelopmentinc.github.io/bandtime/";
+    }
+  </script>
+  
+<script src="script.js"></script>
+  <!--
+  This script places a badge on your repl's full-browser view back to your repl's cover
+  page. Try various colors for the theme: dark, light, red, orange, yellow, lime, green,
+  teal, blue, blurple, magenta, pink!
+  -->
+
+
+  
+</body>
+
+</html>

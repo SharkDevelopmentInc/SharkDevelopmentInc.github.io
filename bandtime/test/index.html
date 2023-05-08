@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Mr. Branta's Time</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    .not-active {
+      pointer-events: none;
+      cursor: default;
+      text-decoration: none;
+      color: black;
+    }
+  </style>
+</head>
+
+<body>
+  <div id='clock'>
+    <center>
+      <a href="https://time.is/Chamblee" id="time_is_link" rel="nofollow"></a>
+      <span id="Chamblee_z161"></span>
+      <script src="//widget.time.is/t.js"></script>
+      <script>
+        time_is_widget.init({Chamblee_z161: {time_format: "‎ 12hours:minutes:seconds‎ "}});
+      </script>
+      <br>
+      <span style="font-size:200px">⇦</span>
+      <br>
+      <span>Time above.</span>
+    </center>
+  </div>
+
+  <script>
+    window.setInterval(function () { //This will trigger every X miliseconds
+
+      var date = new Date(); //Creates a date that is set to the actual date and time
+
+      var hours = date.getHours(); //Get that date hours (from 0 to 23)
+      var minutes = date.getMinutes(); //Get that date minutes (from 0 to 59) 
+
+      if (hours == 1 && minutes == 00) {
+        window.location = 'https://bandtime.sharkdevinc.repl.co/redirect'
+      } else if (hour = 21 && minutes == 00) {
+        //redirect to where you want
+      }
+
+    }, 1000); //In that case 1000 miliseconds equals to 1 second
+
+  </script>
+
+  <!--
+  This script places a badge on your repl's full-browser view back to your repl's cover
+  page. Try various colors for the theme: dark, light, red, orange, yellow, lime, green,
+  teal, blue, blurple, magenta, pink!
+  -->
+
+</body>
+
+</html>
