@@ -1,471 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
     <head>
-        <script>
-            (function() {
-                var isTouch = 'ontouchstart'in window || 'onmsgesturechange'in window;
-                var isMac = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'].indexOf(window.navigator.platform) > -1;
-
-                if (isMac && isTouch) {
-                    var date = new Date();
-                    date.setFullYear(date.getFullYear() + 1);
-
-                    document.cookie = '_mu_force_ipad=1;path=/;domain=.musescore.com;expires=' + date.toUTCString() + ';';
-                    window.location = window.location.href
-                }
-            }
-            )()
-        </script>
-        <script>
-            (function() {
-                function executeIfLoaded(callback) {
-                    if (document.readyState === 'complete') {
-                        callback()
-                    } else {
-                        window.addEventListener('load', callback)
-                    }
-                }
-                function onReady(callback) {
-                    if (document.readyState !== "loading") {
-                        callback();
-                    } else {
-                        document.addEventListener("DOMContentLoaded", callback);
-                    }
-                }
-                function getIsUserScript(stack) {
-                    return stack.indexOf('userscript.html') > -1
-                }
-                var createElement = document.createElement;
-                var open = window.open;
-                var append = HTMLElement.prototype.append;
-                var prepend = HTMLElement.prototype.prepend;
-                var Img = window.Image;
-
-                Object.defineProperty(HTMLElement.prototype, 'append', {
-                    writable: false,
-                    value: function() {
-                        var stack = new Error().stack;
-                        if (getIsUserScript(stack)) {
-                            disable()
-                            return null;
-                        }
-                        return append.apply(this, arguments)
-                    }
-                })
-
-                Object.defineProperty(HTMLElement.prototype, 'prepend', {
-                    writable: false,
-                    value: function() {
-                        var stack = new Error().stack;
-                        if (getIsUserScript(stack)) {
-                            disable()
-                            return null;
-                        }
-                        return prepend.apply(this, arguments)
-                    }
-                })
-
-                function disable() {
-                    executeIfLoaded(function() {
-                        window["yaCounter46196364"].reachGoal('UNLEGAL_PAGE_SHOW', {
-                            TrackingId: "eEBRWWFWR0Q=",
-                            user_id: 70478926,
-                            origin_url: window.location.href,
-                        })
-                    })
-                }
-
-                document.createElement = function() {
-                    var tag = arguments[0].toLowerCase()
-                    if (['img', 'iframe'].indexOf(tag) !== -1) {
-                        var stack = new Error().stack;
-                        if (getIsUserScript(stack)) {
-                            disable()
-                            return null;
-                        }
-                    }
-                    return createElement.apply(this, arguments);
-                }
-                window.open = function() {
-                    var stack = new Error().stack;
-                    if (getIsUserScript(stack))
-                        return;
-                    return open.apply(this, arguments);
-                }
-
-                window.Image = function() {
-                    var stack = new Error().stack
-                    var stackChunks = stack.split('\n').slice(2);
-                    var lastLine = stackChunks.reverse()[0];
-                    var url = lastLine.split(' ').reverse()[0]
-                    var urlChunks = url.substr(1, url.length - 2).split(':')
-                    var resultUrl = urlChunks[0] + ':' + urlChunks[1]
-
-                    if (getIsUserScript(stack) || lastLine.split(' (eval').length >= 3 || (lastLine.indexOf(' eval ') && resultUrl === location.href) || stackChunks.every(function(chunk) {
-                        return chunk.indexOf('a (https://c.amazon-adsystem.com/aax2/apstag.js:') > -1
-                    })) {
-                        disable()
-                        return null;
-                    }
-                    return new Img(arguments[0],arguments[1])
-                }
-            }
-            )();
-        </script>
-        <meta property="og:type" content="musescore:score">
-        <meta property="og:site_name" content="Musescore.com">
-        <meta property="og:title" content="Mr Blue Sky Trombone Duet">
-        <meta property="og:url" content="https://musescore.com/user/25863551/scores/5180704">
-        <meta property="og:description" content="Download and print in PDF or MIDI free sheet music for Mr. Blue Sky by Electric Light Orchestra arranged by silverscott for Piano, Trombone (Brass Duet)">
-        <meta property="musescore:author" content="silverscott">
-        <meta href="/user/25863551" rel="author:author">
-        <meta property="og:image" content="https://musescore.com/static/musescore/scoredata/g/c6c12ddf1dd8d2a1b45b2e75a45a91cd3979980c/score_0.png@850x1100?no-cache=1579687774&amp;bgclr=ffffff">
-        <meta name="twitter:card" content="player">
-        <meta name="twitter:site" content="Musescore">
-        <meta name="twitter:title" content="Mr Blue Sky Trombone Duet">
-        <meta name="twitter:description" content="Download and print in PDF or MIDI free sheet music for Mr. Blue Sky by Electric Light Orchestra arranged by silverscott for Piano, Trombone (Brass Duet)">
-        <meta name="twitter:image" content="https://musescore.com/static/musescore/scoredata/g/c6c12ddf1dd8d2a1b45b2e75a45a91cd3979980c/score_0.png@850x1100?no-cache=1579687774&amp;bgclr=ffffff">
-        <meta name="twitter:player" content="https://musescore.com/user/25863551/scores/5180704/embed">
-        <meta name="twitter:player:width" content="480">
-        <meta name="twitter:player:height" content="480">
-        <meta property="twitter:app:url:googleplay" content="musescore://score/5180704">
-        <meta property="twitter:app:url:iphone" content="musescore://score/5180704">
-        <meta property="twitter:app:url:ipad" content="musescore://score/5180704">
-        <meta property="twitter:app:name:iphone" content="Musescore">
-        <meta property="twitter:app:id:iphone" content="835731296">
-        <meta property="twitter:app:name:ipad" content="Musescore">
-        <meta property="twitter:app:id:ipad" content="835731296">
-        <meta property="twitter:app:name:googleplay" content="Musescore">
-        <meta property="twitter:app:id:googleplay" content="com.musescore.playerlite">
-        <meta name="application-name" content="Musescore">
-        <meta name="msapplication-tooltip" content="Launch Musescore">
-        <meta name="msapplication-TileImage" content="https://s3.amazonaws.com/cdn.musescore.com/images/musescore-144.png">
-        <meta name="msapplication-TileColor" content="#ffffff">
-        <meta name="msapplication-starturl" content="https://musescore.com">
-        <meta property="al:ios:app_name" content="Musescore Songbook">
-        <meta property="al:ios:app_store_id" content="835731296">
-        <meta property="al:android:app_name" content="Musescore">
-        <meta property="al:android:package" content="com.musescore.playerlite">
-        <meta property="al:android:app_name" content="Musescore Songbook">
-        <meta property="al:android:package" content="com.musescore.player">
-        <meta property="al:ios:url" content="musescore://score/5180704">
-        <meta property="al:android:url" content="musescore://score/5180704">
-        <link type="image/svg+xml" href="https://musescore.com/static/musescore/scoredata/g/c6c12ddf1dd8d2a1b45b2e75a45a91cd3979980c/score_0.svg?no-cache=1579687774" rel="preload" as="image" importance="high">
-        <link href="https://musescore.com/user/25863551/scores/5180704" rel="canonical">
-        <link type="text/xml+oembed" href="https://musescore.com/oembed/endpoint?url=https://musescore.com/user/25863551/scores/5180704;format=xml" rel="alternate">
-        <link type="application/json+oembed" href="https://musescore.com/oembed/endpoint?url=https://musescore.com/user/25863551/scores/5180704;format=json" rel="alternate">
-        <link href="android-app://com.musescore.player/musescore/score/5180704" rel="alternate">
-        <link href="ios-app://835731296/musescore/score/5180704" rel="alternate">
-        <link href="https://musescore.com/static/public/build/musescore_es6/vendor.8d931d7e66f8b07d2e7e1d5737791ca0.js" rel="preload" as="script">
-        <link href="https://musescore.com/static/public/build/musescore_es6/ms~runtime.1acb0b4316a0f55394f3b6cbef4c45bf.js" rel="preload" as="script">
-        <link href="https://musescore.com/static/public/build/musescore_es6/ms.012e0d6e8dbc7d1a11375751ce52ec7b.js" rel="preload" as="script">
-        <link href="https://musescore.com/static/public/build/musescore_es6/202308/2946.8c6a8d4d5f3a15ef20e0e6c8a6eaa9f7.js" rel="preload" as="script">
-        <title>Mr Blue Sky Trombone Duet Sheet music for Piano, Trombone (Brass Duet) | Musescore.com</title>
-        <meta name="description" content="Download and print in PDF or MIDI free sheet music for Mr. Blue Sky by Electric Light Orchestra arranged by silverscott for Piano, Trombone (Brass Duet)">
-        <meta name="keywords" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-        <meta charset="utf-8"/>
-        <meta name="author" content="Musescore"/>
-        <meta name="google-play-app" content="app-id=com.musescore.playerlite"/>
-        <meta name="kindle-fire-app" content="app-id=com.musescore.player"/>
-        <meta name="facebook-domain-verification" content="cp5d42j0lpsdi602yrcqh8f6jsktrc"/>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="MobileOptimized" content="width"/>
-        <meta name="HandheldFriendly" content="true"/>
-        <meta name="csrf-param" content="_csrf">
-        <meta name="csrf-token" content="B1_2zr1wu7YaGkQN7pwaaHM3Iao36naBD8eHIZosVsZ_J5yg1ynaz21gIlTa7GoGPWgT0ACTBeBGgPAQqWISpw==">
-        <link rel="manifest" href="/manifest.json"/>
-        <link rel="icon" type="image/svg+xml" href="https://musescore.com/static/public/img/product_icons/musescore/favicon_ver1692802572.svg">
-        <link rel="icon" type="image/x-icon" href="https://musescore.com/static/public/img/product_icons/musescore/favicon_ver1692802572.ico">
-        <link rel="apple-touch-icon" href="https://musescore.com/static/public/img/product_icons/musescore/apple-touch-icon-precomposed_ver1692802572.png"/>
-        <link rel="apple-touch-icon" sizes="72x72" href="https://musescore.com/static/public/img/product_icons/musescore/apple-touch-icon-72x72-precomposed_ver1692802572.png"/>
-        <link rel="apple-touch-icon" sizes="76x76" href="https://musescore.com/static/public/img/product_icons/musescore/apple-touch-icon-76x76-precomposed_ver1692802572.png"/>
-        <link rel="apple-touch-icon" sizes="114x114" href="https://musescore.com/static/public/img/product_icons/musescore/apple-touch-icon-114x114-precomposed_ver1692802572.png"/>
-        <link rel="apple-touch-icon" sizes="120x120" href="https://musescore.com/static/public/img/product_icons/musescore/apple-touch-icon-120x120-precomposed_ver1692802572.png"/>
-        <link rel="apple-touch-icon" sizes="144x144" href="https://musescore.com/static/public/img/product_icons/musescore/apple-touch-icon-144x144-precomposed_ver1692802572.png"/>
-        <link rel="apple-touch-icon" sizes="180x180" href="https://musescore.com/static/public/img/product_icons/musescore/apple-touch-icon-180x180-precomposed_ver1692802572.png"/>
-        <link rel="apple-touch-icon" sizes="192x192" href="https://musescore.com/static/public/img/product_icons/musescore/apple-touch-icon-192x192-precomposed_ver1692802572.png"/>
-        <meta name="application-name" content="Musescore"/>
-        <meta name="msapplication-TileColor" content="#fff"/>
-        <meta name="msapplication-TileImage" content="https://musescore.com/static/public/img/product_icons/musescore/apple-touch-icon-precomposed_ver1692802572.png">
-        <script>
-            var sentryMethodsToSave = ['setUser', 'setTag', 'setTags', 'setExtra', 'setExtras', 'addBreadcrumb', 'setContext'];
-            window.Sentry = {
-                _lazy: true
-            };
-            var sentryLazyCallsQueue = [];
-            var sentryLazyHandler = function() {
-                var args = Array.prototype.slice.call(arguments)
-                var methodName = args[0];
-                var rest = args.slice(1);
-
-                sentryLazyCallsQueue.push([methodName, rest])
-            };
-
-            sentryMethodsToSave.forEach(function(methodName) {
-                window.Sentry[methodName] = sentryLazyHandler.bind(this, methodName);
-            });
-
-            function applySentryLazyData() {
-                if (!sentryLazyCallsQueue)
-                    return;
-
-                for (var i = 0; i < sentryLazyCallsQueue.length; i++) {
-                    var args = sentryLazyCallsQueue[i];
-                    var methodName = args[0];
-                    var restArgs = args[1];
-                    var method = window.Sentry[methodName];
-
-                    method && typeof method === 'function' && method.apply(window.Sentry, restArgs);
-                }
-
-                sentryLazyCallsQueue = undefined;
-            }
-
-            var errors = window.APPERROR ? (window.APPERROR.errors || []) : []
-            var UGERROR = {
-                errors,
-                loggerLoaded: false,
-            };
-
-            var oldOnError = window.onerror;
-            var loadScript = function(src, resolve) {
-                UGERROR.loggerLoaded = true;
-                var script = document.createElement('script');
-                script.async = true;
-                script.type = 'text/javascript';
-                script.src = src;
-
-                var changeState = function() {
-                    if (!loaded) {
-                        resolve()
-                        loaded = true;
-                    }
-                };
-                var loaded;
-
-                script.onreadystatechange = changeState;
-                script.onload = changeState;
-
-                var node = document.getElementsByTagName('script')[0];
-                node.parentNode.insertBefore(script, node);
-            };
-
-            UGERROR.loadErrorLogger = function(release) {
-                var whitelistUrls = [new RegExp('https://musescore.com/static/public')];
-
-                if (window.location.pathname !== '/') {
-                    whitelistUrls.push(new RegExp(window.location.href))
-                }
-
-                !UGERROR.loggerLoaded && loadScript('https://musescore.com/static/public/build/sentry_0_0_2/sentry_wasm_ver1692802572.js', function() {
-                    console.log('[sentry]:', 'bundle successfully loaded')
-                    window.onerror = oldOnError;
-
-                    var data = {}
-                    var tags = {
-                        "country": "US",
-                        "isProUser": false,
-                        "isAuthenticated": true
-                    }
-                    window.initSentry({
-                        dsn: 'https://949bc7d1c76543be8db36f16653ba9a8@sentry10.ultimate-guitar.com/23',
-                        release: release,
-                        allowUrls: whitelistUrls,
-                        ignoreErrors: [/ChunkLoadError:.*/],
-                    });
-
-                    if (window.navigator.connection) {
-                        var conn = window.navigator.connection
-                        data.downlink = conn.downlink
-                        data.effectiveType = conn.effectiveType
-                        data.rtt = conn.rtt
-                        tags.effectiveType = conn.effectiveType
-
-                        window.Sentry.setExtras(data)
-                    }
-
-                    data.id = parseInt('70478926', 10);
-                    data.userId = '70478926';
-
-                    data.id && window.Sentry.setUser(data);
-                    window.Sentry.setTags(tags);
-                    window.Sentry.setContext('Client a/b variations', {
-                        "3184": 2,
-                        "3262": 1,
-                        "3304": 2,
-                        "3310": 2,
-                        "3313": 1,
-                        "3361": 2,
-                        "3373": 4,
-                        "3379": 1,
-                        "3016": 3,
-                        "3064": 2,
-                        "3142": 2,
-                        "3208": 2,
-                        "3223": 2,
-                        "3259": 2,
-                        "3280": 2,
-                        "3343": 2
-                    })
-
-                    try {
-                        applySentryLazyData();
-                    } catch (error) {
-                        console.error(error);
-                    }
-
-                    UGERROR.errors.forEach(function(args) {
-                        if (args.length > 1) {
-                            window.onerror.apply(this, args);
-                            return;
-                        }
-                        var error = args[0] === undefined ? new Error('Caught undefined error') : args[0];
-
-                        if (typeof error === 'string') {
-                            window.Sentry.captureMessage(error, 'error');
-                        } else {
-                            window.Sentry.captureException(error);
-                        }
-                    });
-                })
-            }
-            ;
-
-            function loadSentry() {
-                if (UGERROR.hasFirstError) {
-                    return
-                }
-
-                function load() {
-                    UGERROR.loadErrorLogger("mu-web_app_0.24.04");
-                }
-
-                if (document.readyState === 'complete') {
-                    load();
-                } else {
-                    window.addEventListener('load', load)
-                }
-                UGERROR.hasFirstError = true
-            }
-
-            if (UGERROR.errors && UGERROR.errors.length > 0) {
-                loadSentry()
-            }
-
-            window.onerror = function() {
-                UGERROR.errors.push(arguments);
-                oldOnError && oldOnError.apply(this, arguments);
-
-                loadSentry()
-            }
-            ;
-        </script>
-        <style>
-            body, html {
-                touch-action: manipulation;
-                background: #fff;
-                box-sizing: border-box;
-                -webkit-tap-highlight-color: transparent
-            }
-
-            body * {
-                box-sizing: inherit
-            }
-
-            body {
-                color: #1a202e;
-                font-family: Inter, Helvetica neue, Helvetica, sans-serif;
-                -webkit-text-size-adjust: 100%
-            }
-
-            a {
-                text-decoration: none
-            }
-
-            body, form {
-                margin: 0
-            }
-
-            @page {
-                margin: 0;
-                position: relative
-            }
-
-            @media print {
-                body, html {
-                    background: #fff !important
-                }
-            }
-
-            body.maintenance-page, body.page-boxed-content {
-                background: #f6f6f6
-            }
-        </style>
-        <meta name="mobile-web-app-capable" content="yes">
-        <meta name="theme-color" content="#2E68C0">
-    </head>
-    <body class="js desktop js-cookie-compliance  theme-react">
-        <script>
-            var hasFirstTap = false;
-            (function() {
-                function onFirstTap() {
-                    hasFirstTap = true
-                    document.body.removeEventListener('touchstart', onFirstTap)
-                }
-
-                document.body.addEventListener('touchstart', onFirstTap)
-            }
-            )()
-        </script>
-        <div class="js-page react-container" style="min-height: 100vh;"></div>
-        <script defer src='https://musescore.com/static/public/build/musescore_es6/vendor.8d931d7e66f8b07d2e7e1d5737791ca0.js'></script>
-        <script defer src='https://musescore.com/static/public/build/musescore_es6/ms~runtime.1acb0b4316a0f55394f3b6cbef4c45bf.js'></script>
-        <script defer src='https://musescore.com/static/public/build/musescore_es6/ms.012e0d6e8dbc7d1a11375751ce52ec7b.js'></script>
-        <script>
-            if ('serviceWorker'in navigator) {
-                window.addEventListener('load', function() {
-                    window.navigator.serviceWorker.register('/sw_mu.js').catch(function(error) {
-                        if (window.UGERROR && window.UGERROR.errors) {
-                            window.UGERROR.errors.push(error)
-                        }
-                    })
-                })
-            }
-        </script>
-        <div class="js-19a201fbce3c7870005e9bafd15234c96ac60b6d582dcf571e223d7edf046b20" data-81d08fd1d3e5128c0b184c76251e004dbb55d4643e2e55b794e44be4a7b297d0="{&quot;config&quot;:{&quot;releaseVer&quot;:&quot;mu-web_app_0.24.04&quot;,&quot;staticPrefix&quot;:&quot;/static&quot;,&quot;urlFacebook&quot;:&quot;&quot;,&quot;urlGoogle&quot;:&quot;&quot;,&quot;main_server&quot;:&quot;musescore.com&quot;,&quot;ug_server_name&quot;:&quot;ultimate-guitar.com&quot;,&quot;static_server&quot;:&quot;https://musescore.com/static&quot;,&quot;statik_cache&quot;:&quot;_ver1692802572&quot;,&quot;upload_server&quot;:&quot;https://upload.musescore.com&quot;,&quot;metricaId&quot;:46196364,&quot;country&quot;:&quot;US&quot;,&quot;cf_turnstile_site_key&quot;:&quot;0x4AAAAAAAGYK1RXEWXX02Fv&quot;,&quot;stripeApiKey&quot;:&quot;pk_live_0jDVKIBXIeIW27jHu1LWHNy4&quot;,&quot;upolloApiKey&quot;:&quot;q8or3DQantsU6Jq9hbbbhTq5LV4jaCjbBa2pKupaworF4dd92b45e5522ceb3e5b0a1b6457b5429b93d0d3826ac8a8eb098d27f2bdaa10&quot;,&quot;is_mobile&quot;:false,&quot;captcha_id&quot;:&quot;&quot;,&quot;is_tablet&quot;:false,&quot;is_android&quot;:0,&quot;is_ios&quot;:false,&quot;is_es&quot;:false,&quot;isGDPRAvailable&quot;:false,&quot;isCcpaAvailable&quot;:false,&quot;hasStaticCache&quot;:true,&quot;app_url&quot;:&quot;&quot;,&quot;isWebp&quot;:true,&quot;googleOneTap&quot;:{&quot;client_id&quot;:&quot;129899489146-28hqj8qdpippf2vama0sm48qqiduiovg.apps.googleusercontent.com&quot;,&quot;login_uri&quot;:&quot;https://musescore.com/user/auth/oauth/auth?service=google&amp;onetap=1&quot;},&quot;rtAnalytics&quot;:{&quot;trackUrl&quot;:&quot;/components/data&quot;,&quot;trackingEnabled&quot;:true},&quot;countryCode&quot;:&quot;US&quot;,&quot;os&quot;:&quot;Windows&quot;,&quot;platform&quot;:1,&quot;browser&quot;:&quot;{\&quot;browser\&quot;:{\&quot;name\&quot;:\&quot;Chrome\&quot;,\&quot;version\&quot;:\&quot;116\&quot;,\&quot;type\&quot;:\&quot;browser\&quot;},\&quot;engine\&quot;:{\&quot;name\&quot;:\&quot;Blink\&quot;},\&quot;os\&quot;:{\&quot;name\&quot;:\&quot;Windows\&quot;,\&quot;version\&quot;:{\&quot;value\&quot;:\&quot;10.0\&quot;,\&quot;alias\&quot;:\&quot;10\&quot;}},\&quot;device\&quot;:{\&quot;type\&quot;:\&quot;desktop\&quot;}}&quot;,&quot;browserName&quot;:&quot;Chrome&quot;,&quot;metricaParams&quot;:{&quot;login&quot;:1,&quot;has_pro&quot;:0,&quot;rights&quot;:0,&quot;auth&quot;:&quot;google&quot;,&quot;ab&quot;:{&quot;3184&quot;:2,&quot;3262&quot;:1,&quot;3304&quot;:2,&quot;3310&quot;:2,&quot;3313&quot;:1,&quot;3361&quot;:2,&quot;3373&quot;:4,&quot;3379&quot;:1,&quot;3016&quot;:3,&quot;3064&quot;:2,&quot;3142&quot;:2,&quot;3208&quot;:2,&quot;3223&quot;:2,&quot;3259&quot;:2,&quot;3280&quot;:2,&quot;3343&quot;:2}},&quot;unified_id&quot;:&quot;1.1692804118.1150291&quot;,&quot;auth_type&quot;:&quot;google&quot;,&quot;banners&quot;:[],&quot;statistic&quot;:{&quot;courses_all&quot;:286,&quot;lesson_all&quot;:11188,&quot;scores_all&quot;:1702819,&quot;scores_new&quot;:227349,&quot;scores_official&quot;:44837,&quot;scores_listened_minutes&quot;:20289417,&quot;courses_viewed_minutes&quot;:1362074,&quot;ratings_all&quot;:8300860,&quot;pages_all&quot;:200292958,&quot;scores_transposed&quot;:21347,&quot;courses_instruments&quot;:18,&quot;scores_views&quot;:282528276,&quot;courses_views&quot;:747168,&quot;lessons_new&quot;:1835,&quot;followers_all&quot;:426949},&quot;jinba&quot;:{&quot;appLabel&quot;:&quot;ms_score&quot;,&quot;appLabelExp&quot;:&quot;null&quot;}},&quot;store&quot;:{&quot;score&quot;:{&quot;id&quot;:5180704,&quot;fileVersion&quot;:206,&quot;title&quot;:&quot;Mr Blue Sky Trombone Duet&quot;,&quot;url&quot;:&quot;https://musescore.com/user/25863551/scores/5180704&quot;,&quot;isAddedToFavorite&quot;:0,&quot;partNames&quot;:[&quot;Trombone&quot;,&quot;Trombone&quot;,&quot;Piano&quot;],&quot;share&quot;:{&quot;publicUrl&quot;:&quot;https://musescore.com/user/25863551/scores/5180704&quot;,&quot;embedUrl&quot;:&quot;https://musescore.com/user/25863551/scores/5180704/embed&quot;,&quot;url&quot;:&quot;https%3A%2F%2Fmusescore.com%2Fuser%2F25863551%2Fscores%2F5180704&quot;,&quot;title&quot;:&quot;Mr+Blue+Sky+Trombone+Duet&quot;,&quot;isShowSecretUrl&quot;:false},&quot;user&quot;:{&quot;id&quot;:25863551,&quot;url&quot;:&quot;https://musescore.com/user/25863551&quot;,&quot;name&quot;:&quot;silverscott&quot;},&quot;hasAccess&quot;:false,&quot;isBlocked&quot;:false,&quot;isPublic&quot;:true,&quot;isDownloadable&quot;:true,&quot;statUrl&quot;:&quot;https://musescore.com/score/stats/view?score_id=5180704&quot;,&quot;statDelayedUrl&quot;:&quot;https://musescore.com/score/stats/delayed-view?score_id=5180704&quot;,&quot;pagination&quot;:[],&quot;scoreOfTheDay&quot;:[]},&quot;user&quot;:{&quot;hasPrintAccess&quot;:0,&quot;hasProAccess&quot;:0,&quot;id&quot;:70478926,&quot;avatarUrl&quot;:&quot;https://musescore.com/static/musescore/userdata/avatar/default.jpg@300x300?cache=0&quot;,&quot;profileUrl&quot;:&quot;https://musescore.com/user/70478926&quot;,&quot;username&quot;:&quot;jaxhudnall&quot;,&quot;email&quot;:&quot;jaxhudnall@gmail.com&quot;,&quot;usergroupid&quot;:&quot;&quot;,&quot;iq&quot;:&quot;&quot;,&quot;user_status&quot;:&quot;&quot;,&quot;isDebounced&quot;:false,&quot;isPro&quot;:false,&quot;isAbonement&quot;:false,&quot;isProPlus&quot;:false,&quot;isNewUser&quot;:true,&quot;isStaff&quot;:false,&quot;isModerator&quot;:false,&quot;isObserver&quot;:false,&quot;isCopyrightManager&quot;:false,&quot;userDateCreated&quot;:1692803942,&quot;emailFlags&quot;:{&quot;isActivated&quot;:true,&quot;isBouncing&quot;:false},&quot;daily_user_counter&quot;:1,&quot;isRatingDisabled&quot;:0,&quot;isBanned&quot;:0,&quot;totalScoresCount&quot;:0,&quot;firstScoreUploadTimestamp&quot;:0,&quot;accesses&quot;:[],&quot;outdated_accesses&quot;:[],&quot;session&quot;:{&quot;id&quot;:&quot;1.1692804115.1692804182&quot;,&quot;is_renew_session&quot;:false,&quot;expire_duration&quot;:300,&quot;expire_duration_dispersion&quot;:[5000,10000],&quot;enable_refresh&quot;:true,&quot;screen&quot;:&quot;ScoreMain&quot;},&quot;search_session_id&quot;:&quot;&quot;,&quot;grace_period_product_type_name&quot;:&quot;&quot;,&quot;can_upgrade&quot;:{&quot;pro&quot;:false,&quot;edu&quot;:false,&quot;one&quot;:false,&quot;abonement&quot;:false},&quot;payment_account_id&quot;:0,&quot;segment_info&quot;:{&quot;segment&quot;:&quot;mob_web_up_to_3_scores_view_per_2_month&quot;,&quot;pred&quot;:0,&quot;group&quot;:&quot;learn_few_scores_actively_with_active_print_and_load&quot;,&quot;events&quot;:4,&quot;loads&quot;:2,&quot;rec&quot;:60,&quot;freq&quot;:1}},&quot;jmuse_settings&quot;:{&quot;score_player&quot;:{&quot;isHasSVG&quot;:true,&quot;isHasBranded&quot;:false,&quot;embed&quot;:false,&quot;hideControls&quot;:false,&quot;sources&quot;:[{&quot;type&quot;:&quot;audio&quot;,&quot;title&quot;:&quot;Musescore audio&quot;,&quot;nid&quot;:5180704},{&quot;type&quot;:&quot;midi&quot;,&quot;title&quot;:&quot;Synthesizer&quot;,&quot;nid&quot;:0}],&quot;default_source&quot;:&quot;&quot;,&quot;mixer&quot;:&quot;&quot;,&quot;secondaryMixer&quot;:&quot;&quot;,&quot;bucket&quot;:&quot;https://musescore.com/static/musescore/scoredata&quot;,&quot;json&quot;:{&quot;id&quot;:5180704,&quot;vid&quot;:8432890,&quot;dates&quot;:{&quot;revised&quot;:1579687774},&quot;secret&quot;:&quot;53e3b1b122&quot;,&quot;permalink&quot;:&quot;https://musescore.com/user/25863551/scores/5180704&quot;,&quot;custom_url&quot;:&quot;https://musescore.com/user/25863551/scores/5180704&quot;,&quot;format&quot;:&quot;0&quot;,&quot;has_custom_audio&quot;:0,&quot;metadata&quot;:{&quot;title&quot;:&quot;Mr Blue Sky Trombone Duet&quot;,&quot;subtitle&quot;:&quot;&quot;,&quot;composer&quot;:&quot;&quot;,&quot;measures&quot;:168,&quot;poet&quot;:&quot;&quot;,&quot;lyrics&quot;:0,&quot;chordnames&quot;:0,&quot;keysig&quot;:-1,&quot;duration&quot;:229,&quot;dimensions&quot;:&quot;216x279&quot;,&quot;parts&quot;:[{&quot;part&quot;:{&quot;name&quot;:&quot;Trombone&quot;,&quot;program&quot;:&quot;57&quot;}},{&quot;part&quot;:{&quot;name&quot;:&quot;Trombone&quot;,&quot;program&quot;:&quot;57&quot;}},{&quot;part&quot;:{&quot;name&quot;:&quot;Piano&quot;,&quot;program&quot;:&quot;0&quot;}}],&quot;pages&quot;:10}},&quot;render_vector&quot;:true,&quot;comments&quot;:[],&quot;score_id&quot;:5180704,&quot;urls&quot;:{&quot;space&quot;:&quot;https://musescore.com/static/musescore/scoredata/g/c6c12ddf1dd8d2a1b45b2e75a45a91cd3979980c/space.jsonp?revision=1532976056&amp;no-cache=1692804182&quot;,&quot;image_path&quot;:&quot;https://musescore.com/static/musescore/scoredata/g/c6c12ddf1dd8d2a1b45b2e75a45a91cd3979980c/&quot;,&quot;media&quot;:[]},&quot;sendEvents&quot;:true,&quot;pianoKeyboard&quot;:{&quot;enabled&quot;:true,&quot;hasAccess&quot;:false},&quot;pianoRoll&quot;:{&quot;enabled&quot;:true,&quot;hasAccess&quot;:true,&quot;resourcesUrl&quot;:&quot;https://musescore.com/static/public/img/musescore/piano_roll&quot;,&quot;feedbackUrl&quot;:&quot;https://musescore.com/groups/improving-musescore-com/discuss/5029644&quot;,&quot;forceShow&quot;:false}}},&quot;billing&quot;:{&quot;subscriptions&quot;:[],&quot;credits&quot;:{&quot;amount&quot;:0},&quot;abonement&quot;:{&quot;amount&quot;:0},&quot;lite_abonement&quot;:{&quot;amount&quot;:0}},&quot;search&quot;:{&quot;value&quot;:&quot;&quot;},&quot;notifications&quot;:{&quot;countNew&quot;:0,&quot;data&quot;:[]},&quot;flashMessage&quot;:null,&quot;telemetry&quot;:{&quot;trackingId&quot;:&quot;&#039;eEBRWWFWR0Q=&#039;&quot;},&quot;set_order_options&quot;:[{&quot;name&quot;:&quot;Custom&quot;,&quot;value&quot;:0},{&quot;name&quot;:&quot;Title&quot;,&quot;value&quot;:1},{&quot;name&quot;:&quot;Date uploaded (newest first)&quot;,&quot;value&quot;:2},{&quot;name&quot;:&quot;Date uploaded (oldest first)&quot;,&quot;value&quot;:3},{&quot;name&quot;:&quot;View count&quot;,&quot;value&quot;:4},{&quot;name&quot;:&quot;Rating&quot;,&quot;value&quot;:5}],&quot;page&quot;:{&quot;template&quot;:{&quot;module&quot;:&quot;score&quot;,&quot;controller&quot;:&quot;view&quot;,&quot;action&quot;:&quot;index&quot;,&quot;isUgOffice&quot;:0,&quot;isOuterMarkupDisabled&quot;:false,&quot;reactAction&quot;:&quot;common&quot;},&quot;experiments&quot;:{&quot;variations&quot;:{&quot;3184&quot;:2,&quot;3262&quot;:1,&quot;3304&quot;:2,&quot;3310&quot;:2,&quot;3313&quot;:1,&quot;3361&quot;:2,&quot;3373&quot;:4,&quot;3379&quot;:1,&quot;3016&quot;:3,&quot;3064&quot;:2,&quot;3142&quot;:2,&quot;3208&quot;:2,&quot;3223&quot;:2,&quot;3259&quot;:2,&quot;3280&quot;:2,&quot;3343&quot;:2},&quot;closed_experiments&quot;:{&quot;3016&quot;:3,&quot;3064&quot;:2,&quot;3142&quot;:2,&quot;3208&quot;:2,&quot;3223&quot;:2,&quot;3259&quot;:2,&quot;3280&quot;:2,&quot;3343&quot;:2}},&quot;data&quot;:{&quot;score&quot;:{&quot;id&quot;:5180704,&quot;title&quot;:&quot;Mr Blue Sky Trombone Duet&quot;,&quot;file_score_title&quot;:&quot;Mr Blue Sky Trombone Duet&quot;,&quot;subtitle&quot;:&quot;&quot;,&quot;description&quot;:&quot;Brass Duet&quot;,&quot;can_manage_score&quot;:false,&quot;parts&quot;:3,&quot;parts_names&quot;:[&quot;Trombone&quot;,&quot;Trombone&quot;,&quot;Piano&quot;],&quot;thumbnails&quot;:{&quot;small&quot;:&quot;https://musescore.com/static/musescore/scoredata/g/c6c12ddf1dd8d2a1b45b2e75a45a91cd3979980c/score_0.png@180x252?no-cache=1579687774&amp;bgclr=ffffff&quot;,&quot;medium&quot;:&quot;https://musescore.com/static/musescore/scoredata/g/c6c12ddf1dd8d2a1b45b2e75a45a91cd3979980c/score_0.png@300x420?no-cache=1579687774&amp;bgclr=ffffff&quot;,&quot;large&quot;:&quot;https://musescore.com/static/musescore/scoredata/g/c6c12ddf1dd8d2a1b45b2e75a45a91cd3979980c/score_0.png@500x660?no-cache=1579687774&amp;bgclr=ffffff&quot;,&quot;original&quot;:&quot;https://musescore.com/static/musescore/scoredata/g/c6c12ddf1dd8d2a1b45b2e75a45a91cd3979980c/score_0.png?no-cache=1579687774&quot;},&quot;share&quot;:{&quot;publicUrl&quot;:&quot;https://musescore.com/user/25863551/scores/5180704&quot;,&quot;embedUrl&quot;:&quot;https://musescore.com/user/25863551/scores/5180704/embed&quot;,&quot;url&quot;:&quot;https%3A%2F%2Fmusescore.com%2Fuser%2F25863551%2Fscores%2F5180704&quot;,&quot;title&quot;:&quot;Mr+Blue+Sky+Trombone+Duet&quot;,&quot;isShowSecretUrl&quot;:false},&quot;user&quot;:{&quot;id&quot;:25863551,&quot;name&quot;:&quot;silverscott&quot;,&quot;url&quot;:&quot;https://musescore.com/user/25863551&quot;,&quot;image&quot;:&quot;https://musescore.com/static/musescore/userdata/avatar/4/c/3/25863551.jpg@150x150?cache=1651957825&quot;,&quot;is_pro&quot;:true,&quot;is_staff&quot;:false,&quot;is_moderator&quot;:false,&quot;cover_url&quot;:&quot;https://musescore.com/static/musescore/userdata/cover/4/a/8/25863551.jpg?cache=1525273184&quot;,&quot;has_cover&quot;:true,&quot;date_created&quot;:1507070462,&quot;is_publisher&quot;:false,&quot;_links&quot;:{&quot;self&quot;:{&quot;href&quot;:&quot;https://musescore.com/user/25863551&quot;}}},&quot;url&quot;:&quot;https://musescore.com/user/25863551/scores/5180704&quot;,&quot;duration&quot;:&quot;03:49&quot;,&quot;composer_name&quot;:&quot;&quot;,&quot;pages_count&quot;:10,&quot;date_created&quot;:1532976056,&quot;date_updated&quot;:1579687774,&quot;favorite_count&quot;:646,&quot;comments_count&quot;:19,&quot;instruments&quot;:[{&quot;name&quot;:&quot;Trombone (2)&quot;,&quot;url_to_search&quot;:&quot;/sheetmusic/trombone&quot;,&quot;count&quot;:2},{&quot;name&quot;:&quot;Piano&quot;,&quot;url_to_search&quot;:&quot;/sheetmusic/piano&quot;,&quot;count&quot;:1}],&quot;hits&quot;:13798,&quot;is_draft&quot;:false,&quot;processing&quot;:&quot;ready&quot;,&quot;revisions_count&quot;:1,&quot;revision_id&quot;:8432890,&quot;has_custom_video&quot;:false,&quot;has_custom_audio&quot;:false,&quot;is_private&quot;:0,&quot;is_blocked&quot;:false,&quot;is_origin&quot;:false,&quot;is_public_domain&quot;:false,&quot;truncated_description&quot;:&quot;Written by Electric Light Orchestra. Arranged for a trombone duet by me. Did this for solo and ensemble for me and a frie [url state=primary href=\&quot;https://musescore.com/user/25863551/scores/5180704\&quot;]Read more[/url]&quot;,&quot;instrumentations&quot;:[{&quot;id&quot;:39,&quot;name&quot;:&quot;Brass Duet&quot;,&quot;parent_id&quot;:129,&quot;weight&quot;:0,&quot;is_active&quot;:1,&quot;is_auto&quot;:1,&quot;uri&quot;:&quot;brass-duet&quot;,&quot;url_to_search&quot;:&quot;/sheetmusic/brass-duet&quot;}],&quot;rating&quot;:{&quot;rating&quot;:4.80999999999999960920149533194489777088165283203125,&quot;count&quot;:94,&quot;count_to_visible&quot;:0,&quot;stats&quot;:[{&quot;rating&quot;:5,&quot;count&quot;:80},{&quot;rating&quot;:4,&quot;count&quot;:11},{&quot;rating&quot;:3,&quot;count&quot;:3}],&quot;user_rating&quot;:null,&quot;abusive_ban_time&quot;:null,&quot;abusive_ban_time_remain&quot;:null},&quot;publisher&quot;:null,&quot;is_official&quot;:false,&quot;body&quot;:&quot;Written by Electric Light Orchestra. Arranged for a trombone duet by me. Did this for solo and ensemble for me and a friend. please critique me. Purposely made it shorter than the original. Got some of the piano chords from other people on this site but mostly did it by ear.&quot;,&quot;tags&quot;:[],&quot;is_downloadable&quot;:1,&quot;license&quot;:&quot;all-rights-reserved&quot;,&quot;instrumentation_id&quot;:39,&quot;is_original&quot;:false,&quot;measures&quot;:168,&quot;keysig&quot;:&quot;F major, D minor&quot;,&quot;license_id&quot;:9,&quot;license_version&quot;:&quot;4.0&quot;,&quot;song_name&quot;:&quot;Mr. Blue Sky&quot;,&quot;artist_name&quot;:&quot;Electric Light Orchestra&quot;,&quot;complexity&quot;:0,&quot;category_pages&quot;:[{&quot;url_to_search&quot;:&quot;https://musescore.com/sheetmusic/piano/rock&quot;,&quot;name&quot;:&quot;Rock for Piano&quot;}],&quot;_links&quot;:{&quot;self&quot;:{&quot;href&quot;:&quot;https://musescore.com/user/25863551/scores/5180704&quot;}}},&quot;sets&quot;:[{&quot;url&quot;:&quot;/user/37399862/sets/5129423&quot;,&quot;title&quot;:&quot;Trombone (78)&quot;,&quot;count&quot;:78},{&quot;url&quot;:&quot;/user/42748601/sets/5153447&quot;,&quot;title&quot;:&quot;TROMBONE ❤️❤️ (6)&quot;,&quot;count&quot;:6},{&quot;url&quot;:&quot;/user/36260121/sets/5256366&quot;,&quot;title&quot;:&quot;bone (11)&quot;,&quot;count&quot;:11},{&quot;url&quot;:&quot;/user/39179096/sets/5837242&quot;,&quot;title&quot;:&quot;trombone duet (24)&quot;,&quot;count&quot;:24},{&quot;url&quot;:&quot;/user/42866717/sets/5130869&quot;,&quot;title&quot;:&quot;#1 (3)&quot;,&quot;count&quot;:3},{&quot;url&quot;:&quot;/user/32007836/sets/5495393&quot;,&quot;title&quot;:&quot;Bones and maybe a tone (9)&quot;,&quot;count&quot;:9},{&quot;url&quot;:&quot;/user/32441845/sets/6090982&quot;,&quot;title&quot;:&quot;duet (2)&quot;,&quot;count&quot;:2},{&quot;url&quot;:&quot;/hub/cartoons/spongebob-squarepants&quot;,&quot;title&quot;:&quot;SpongeBob SquarePants (76)&quot;},{&quot;url&quot;:&quot;/hub/anime&quot;,&quot;title&quot;:&quot;Anime (3)&quot;},{&quot;url&quot;:&quot;/hub/anime/howls-moving-castle&quot;,&quot;title&quot;:&quot;Howl&#039;s Moving Castle (87)&quot;},{&quot;url&quot;:&quot;/hub/anime/your-lie-in-april&quot;,&quot;title&quot;:&quot;Your Lie In April (24)&quot;},{&quot;url&quot;:&quot;/hub/anime/attack-on-titan&quot;,&quot;title&quot;:&quot;Attack On Titan (57)&quot;}],&quot;groups&quot;:[{&quot;url&quot;:&quot;https://musescore.com/groups/get-your-music-heard/&quot;,&quot;title&quot;:&quot;Get Your Music Heard!&quot;},{&quot;url&quot;:&quot;https://musescore.com/groups/middleschoolcomposersandmusicians/&quot;,&quot;title&quot;:&quot;Middle School Composers&quot;},{&quot;url&quot;:&quot;https://musescore.com/groups/pieridot/&quot;,&quot;title&quot;:&quot;PIEridot&#039;s Trombone Haven&quot;},{&quot;url&quot;:&quot;https://musescore.com/groups/4975086/&quot;,&quot;title&quot;:&quot;Music Friends&quot;}],&quot;comments&quot;:{&quot;comments&quot;:[{&quot;id&quot;:7511077,&quot;score_id&quot;:5180704,&quot;user_id&quot;:64109362,&quot;date_created&quot;:1684085590,&quot;date_updated&quot;:1684085590,&quot;body&quot;:&quot;SLAYYYYYY&quot;,&quot;parent_id&quot;:0,&quot;thread&quot;:&quot;0000e/&quot;,&quot;annotation_page&quot;:-1,&quot;annotation_axis_x&quot;:&quot;&quot;,&quot;annotation_axis_y&quot;:&quot;&quot;,&quot;annotation_width&quot;:&quot;&quot;,&quot;annotation_height&quot;:&quot;&quot;,&quot;source_id&quot;:1,&quot;likes_count&quot;:0,&quot;is_deleted&quot;:false,&quot;is_liked&quot;:false,&quot;user_name&quot;:&quot;Ratatoullie&quot;,&quot;user_uri&quot;:&quot;&quot;,&quot;date_avatar_updated&quot;:0,&quot;status&quot;:1,&quot;is_pro&quot;:37125985,&quot;date&quot;:&quot;May 14, 2023&quot;,&quot;html&quot;:&quot;SLAYYYYYY&quot;,&quot;raw&quot;:&quot;SLAYYYYYY&quot;,&quot;access&quot;:{&quot;can_delete&quot;:false,&quot;can_edit&quot;:false,&quot;can_reply&quot;:true},&quot;url&quot;:&quot;https://musescore.com/user/64109362/scores/5180704#comment-7511077&quot;,&quot;user_url&quot;:&quot;https://musescore.com/user/64109362&quot;,&quot;user&quot;:{&quot;id&quot;:64109362,&quot;is_author&quot;:false,&quot;url&quot;:&quot;https://musescore.com/user/64109362&quot;,&quot;name&quot;:&quot;Ratatoullie&quot;,&quot;avatar_url&quot;:&quot;https://musescore.com/static/musescore/userdata/avatar/default.jpg@100x100?cache=0&quot;,&quot;is_pro&quot;:true,&quot;is_staff&quot;:false,&quot;is_moderator&quot;:false},&quot;annotation&quot;:null},{&quot;id&quot;:6782960,&quot;score_id&quot;:5180704,&quot;user_id&quot;:49031913,&quot;date_created&quot;:1655223024,&quot;date_updated&quot;:1655223024,&quot;body&quot;:&quot;very very good&quot;,&quot;parent_id&quot;:0,&quot;thread&quot;:&quot;0000d/&quot;,&quot;annotation_page&quot;:-1,&quot;annotation_axis_x&quot;:&quot;&quot;,&quot;annotation_axis_y&quot;:&quot;&quot;,&quot;annotation_width&quot;:&quot;&quot;,&quot;annotation_height&quot;:&quot;&quot;,&quot;source_id&quot;:1,&quot;likes_count&quot;:0,&quot;is_deleted&quot;:false,&quot;is_liked&quot;:false,&quot;user_name&quot;:&quot;olliepotato23&quot;,&quot;user_uri&quot;:&quot;&quot;,&quot;date_avatar_updated&quot;:1663188936,&quot;status&quot;:1,&quot;is_pro&quot;:null,&quot;date&quot;:&quot;Jun 14, 2022&quot;,&quot;html&quot;:&quot;very very good&quot;,&quot;raw&quot;:&quot;very very good&quot;,&quot;access&quot;:{&quot;can_delete&quot;:false,&quot;can_edit&quot;:false,&quot;can_reply&quot;:true},&quot;url&quot;:&quot;https://musescore.com/user/49031913/scores/5180704#comment-6782960&quot;,&quot;user_url&quot;:&quot;https://musescore.com/user/49031913&quot;,&quot;user&quot;:{&quot;id&quot;:49031913,&quot;is_author&quot;:false,&quot;url&quot;:&quot;https://musescore.com/user/49031913&quot;,&quot;name&quot;:&quot;olliepotato23&quot;,&quot;avatar_url&quot;:&quot;https://musescore.com/static/musescore/userdata/avatar/7/8/9/49031913.jpg@100x100?cache=1663188936&quot;,&quot;is_pro&quot;:false,&quot;is_staff&quot;:false,&quot;is_moderator&quot;:false},&quot;annotation&quot;:null},{&quot;id&quot;:6314978,&quot;score_id&quot;:5180704,&quot;user_id&quot;:33500700,&quot;date_created&quot;:1639764860,&quot;date_updated&quot;:1639764860,&quot;body&quot;:&quot;Such a great song, now imported to sheet music.&quot;,&quot;parent_id&quot;:0,&quot;thread&quot;:&quot;0000c/&quot;,&quot;annotation_page&quot;:-1,&quot;annotation_axis_x&quot;:&quot;&quot;,&quot;annotation_axis_y&quot;:&quot;&quot;,&quot;annotation_width&quot;:&quot;&quot;,&quot;annotation_height&quot;:&quot;&quot;,&quot;source_id&quot;:1,&quot;likes_count&quot;:0,&quot;is_deleted&quot;:false,&quot;is_liked&quot;:false,&quot;user_name&quot;:&quot;jerb61&quot;,&quot;user_uri&quot;:&quot;&quot;,&quot;date_avatar_updated&quot;:0,&quot;status&quot;:1,&quot;is_pro&quot;:null,&quot;date&quot;:&quot;Dec 17, 2021&quot;,&quot;html&quot;:&quot;Such a great song, now imported to sheet music.&quot;,&quot;raw&quot;:&quot;Such a great song, now imported to sheet music.&quot;,&quot;access&quot;:{&quot;can_delete&quot;:false,&quot;can_edit&quot;:false,&quot;can_reply&quot;:true},&quot;url&quot;:&quot;https://musescore.com/user/33500700/scores/5180704#comment-6314978&quot;,&quot;user_url&quot;:&quot;https://musescore.com/user/33500700&quot;,&quot;user&quot;:{&quot;id&quot;:33500700,&quot;is_author&quot;:false,&quot;url&quot;:&quot;https://musescore.com/user/33500700&quot;,&quot;name&quot;:&quot;jerb61&quot;,&quot;avatar_url&quot;:&quot;https://musescore.com/static/musescore/userdata/avatar/default.jpg@100x100?cache=0&quot;,&quot;is_pro&quot;:false,&quot;is_staff&quot;:false,&quot;is_moderator&quot;:false},&quot;annotation&quot;:null},{&quot;id&quot;:6214304,&quot;score_id&quot;:5180704,&quot;user_id&quot;:38583844,&quot;date_created&quot;:1635145403,&quot;date_updated&quot;:1635145403,&quot;body&quot;:&quot;Firstly, this sounds amazing. Secondly, I have two questions about this piece one is when do you take the Harmon mute out and the second what do you want done with the Harmon mute? I don&#039;t own one and I am not going to buy one especially for this piece so I am using a cup mute which I can take the cup off and make it a straight mute. would it be better to have the cup on or off?\n\nAgain thanks for the music it sounds amazing.&quot;,&quot;parent_id&quot;:0,&quot;thread&quot;:&quot;0000b/&quot;,&quot;annotation_page&quot;:-1,&quot;annotation_axis_x&quot;:&quot;undefined&quot;,&quot;annotation_axis_y&quot;:&quot;undefined&quot;,&quot;annotation_width&quot;:&quot;undefined&quot;,&quot;annotation_height&quot;:&quot;undefined&quot;,&quot;source_id&quot;:1,&quot;likes_count&quot;:0,&quot;is_deleted&quot;:false,&quot;is_liked&quot;:false,&quot;user_name&quot;:&quot;jadynwetzig01&quot;,&quot;user_uri&quot;:&quot;&quot;,&quot;date_avatar_updated&quot;:1637703664,&quot;status&quot;:1,&quot;is_pro&quot;:13269360,&quot;date&quot;:&quot;Oct 25, 2021&quot;,&quot;html&quot;:&quot;Firstly, this sounds amazing. Secondly, I have two questions about this piece one is when do you take the Harmon mute out and the second what do you want done with the Harmon mute? I don&amp;#039;t own one and I am not going to buy one especially for this piece so I am using a cup mute which I can take the cup off and make it a straight mute. would it be better to have the cup on or off?&lt;br /&gt;\n&lt;br /&gt;\nAgain thanks for the music it sounds amazing.&quot;,&quot;raw&quot;:&quot;Firstly, this sounds amazing. Secondly, I have two questions about this piece one is when do you take the Harmon mute out and the second what do you want done with the Harmon mute? I don&#039;t own one and I am not going to buy one especially for this piece so I am using a cup mute which I can take the cup off and make it a straight mute. would it be better to have the cup on or off?\n\nAgain thanks for the music it sounds amazing.&quot;,&quot;access&quot;:{&quot;can_delete&quot;:false,&quot;can_edit&quot;:false,&quot;can_reply&quot;:true},&quot;url&quot;:&quot;https://musescore.com/user/38583844/scores/5180704#comment-6214304&quot;,&quot;user_url&quot;:&quot;https://musescore.com/user/38583844&quot;,&quot;user&quot;:{&quot;id&quot;:38583844,&quot;is_author&quot;:false,&quot;url&quot;:&quot;https://musescore.com/user/38583844&quot;,&quot;name&quot;:&quot;jadynwetzig01&quot;,&quot;avatar_url&quot;:&quot;https://musescore.com/static/musescore/userdata/avatar/5/8/d/38583844.jpg@100x100?cache=1637703664&quot;,&quot;is_pro&quot;:true,&quot;is_staff&quot;:false,&quot;is_moderator&quot;:false},&quot;annotation&quot;:null},{&quot;id&quot;:6545000,&quot;score_id&quot;:5180704,&quot;user_id&quot;:37048542,&quot;date_created&quot;:1647203839,&quot;date_updated&quot;:1647203839,&quot;body&quot;:&quot;know this is late but take out the mute at 119&quot;,&quot;parent_id&quot;:6214304,&quot;thread&quot;:&quot;0000b.00000/&quot;,&quot;annotation_page&quot;:-1,&quot;annotation_axis_x&quot;:&quot;&quot;,&quot;annotation_axis_y&quot;:&quot;&quot;,&quot;annotation_width&quot;:&quot;&quot;,&quot;annotation_height&quot;:&quot;&quot;,&quot;source_id&quot;:1,&quot;likes_count&quot;:0,&quot;is_deleted&quot;:false,&quot;is_liked&quot;:false,&quot;user_name&quot;:&quot;dylanholton88&quot;,&quot;user_uri&quot;:&quot;&quot;,&quot;date_avatar_updated&quot;:0,&quot;status&quot;:1,&quot;is_pro&quot;:null,&quot;date&quot;:&quot;Mar 13, 2022&quot;,&quot;html&quot;:&quot;know this is late but take out the mute at 119&quot;,&quot;raw&quot;:&quot;know this is late but take out the mute at 119&quot;,&quot;access&quot;:{&quot;can_delete&quot;:false,&quot;can_edit&quot;:false,&quot;can_reply&quot;:true},&quot;url&quot;:&quot;https://musescore.com/user/37048542/scores/5180704#comment-6545000&quot;,&quot;user_url&quot;:&quot;https://musescore.com/user/37048542&quot;,&quot;user&quot;:{&quot;id&quot;:37048542,&quot;is_author&quot;:false,&quot;url&quot;:&quot;https://musescore.com/user/37048542&quot;,&quot;name&quot;:&quot;dylanholton88&quot;,&quot;avatar_url&quot;:&quot;https://musescore.com/static/musescore/userdata/avatar/default.jpg@100x100?cache=0&quot;,&quot;is_pro&quot;:false,&quot;is_staff&quot;:false,&quot;is_moderator&quot;:false},&quot;annotation&quot;:null}],&quot;comments_total&quot;:18},&quot;composer&quot;:{&quot;id&quot;:460,&quot;name&quot;:&quot;Electric Light Orchestra&quot;,&quot;uri&quot;:&quot;electric_light_orchestra&quot;,&quot;featured&quot;:0,&quot;url&quot;:&quot;https://musescore.com/sheetmusic/artists/electric_light_orchestra&quot;},&quot;count_views&quot;:13798,&quot;count_favorites&quot;:646,&quot;count_comments&quot;:18,&quot;privacy_string&quot;:&quot;&lt;i class=\&quot;icon-public\&quot;&gt;&lt;/i&gt; Everyone can see this score&quot;,&quot;license_string&quot;:&quot;&lt;i class=\&quot;icon-copyright\&quot;&gt;&lt;/i&gt; None (All rights reserved)&quot;,&quot;license_url&quot;:&quot;&quot;,&quot;is_user_follow&quot;:false,&quot;as_pro&quot;:true,&quot;isAddedToFavorite&quot;:false,&quot;isAddedToSpotlight&quot;:false,&quot;is_banned_user&quot;:false,&quot;genres&quot;:[{&quot;name&quot;:&quot;rock&quot;,&quot;url_to_search&quot;:&quot;/sheetmusic/rock&quot;}],&quot;secret&quot;:null,&quot;blocker_info&quot;:null,&quot;opened_dispute&quot;:false,&quot;pr_show&quot;:false,&quot;score_of_the_day&quot;:{&quot;id&quot;:42055,&quot;user_id&quot;:21171171,&quot;score_id&quot;:5634470,&quot;type&quot;:2,&quot;date_created&quot;:1562581079,&quot;date_updated&quot;:1562581741,&quot;date_converted&quot;:1562581741,&quot;date_status_updated&quot;:1562581741,&quot;title&quot;:&quot;BTS - Heartbeat (WORLD OST ) | Piano Tutorial + Sheet music&quot;,&quot;subtitle&quot;:&quot;BTS - Heartbeat by arranged by min jiyoon [Piano Tutorial + Sheet music]&quot;,&quot;description&quot;:&quot;Piano tutorial for Heartbeat by BTS (World  OST)\r\nTry the interactive tutorial, or download the sheet music here: https://musescore.com/user/21585386/scores/5634470/piano-tutorial?from=youtube_share \r\nMore than 500 000 tutorials are available for free on https://musescore.com\r\nThe original sheet music made by min jiyoon: https://musescore.com/user/21585386\r\nSupport arranger on on YouTube https://www.youtube.com/watch?v=L-42iZef7y4&quot;,&quot;channel_id&quot;:&quot;UCfY410QyoHlC4jwUZZOjgOg&quot;,&quot;video_id&quot;:&quot;9NVnfFiOA_E&quot;,&quot;privacy&quot;:&quot;public&quot;,&quot;notify_subscribers&quot;:1,&quot;tags&quot;:&quot;BTS - Heartbeat,piano tutorial,BTS - Heartbeat piano tutorial,synthesia&quot;,&quot;as_media_source&quot;:0,&quot;processing_status&quot;:4},&quot;is_download_limited&quot;:false,&quot;error_description&quot;:null,&quot;copyright_details&quot;:[],&quot;private_link_secret&quot;:null,&quot;type_download_list&quot;:[{&quot;type&quot;:&quot;mscz&quot;,&quot;url&quot;:&quot;https://musescore.com/score/download/index?score_id=5180704&amp;type=mscz&amp;h=1048646865346915272&quot;},{&quot;type&quot;:&quot;pdf&quot;,&quot;url&quot;:&quot;https://musescore.com/score/download/index?score_id=5180704&amp;type=pdf&amp;h=1048646865346915272&quot;},{&quot;type&quot;:&quot;mp4-sheet&quot;,&quot;url&quot;:&quot;https://musescore.com/score/download/index?score_id=5180704&amp;type=mp4-sheet&amp;h=1048646865346915272&quot;},{&quot;type&quot;:&quot;mxl&quot;,&quot;url&quot;:&quot;https://musescore.com/score/download/index?score_id=5180704&amp;type=mxl&amp;h=1048646865346915272&quot;},{&quot;type&quot;:&quot;mid&quot;,&quot;url&quot;:&quot;https://musescore.com/score/download/index?score_id=5180704&amp;type=mid&amp;h=1048646865346915272&quot;},{&quot;type&quot;:&quot;mp3&quot;,&quot;url&quot;:&quot;https://musescore.com/score/download/index?score_id=5180704&amp;type=mp3&amp;h=1048646865346915272&quot;}],&quot;is_public_domain&quot;:false,&quot;is_waiting_for_moderate&quot;:false,&quot;score_user_count&quot;:0,&quot;limit_download_count&quot;:20,&quot;is_blocked&quot;:false,&quot;song&quot;:{&quot;id&quot;:2229954,&quot;name&quot;:&quot;Mr. Blue Sky&quot;,&quot;artist&quot;:{&quot;id&quot;:129038,&quot;name&quot;:&quot;Electric Light Orchestra&quot;,&quot;_links&quot;:{&quot;self&quot;:{&quot;href&quot;:&quot;https://musescore.com/artist/electric_light_orchestra-129038&quot;}}},&quot;_links&quot;:{&quot;self&quot;:{&quot;href&quot;:&quot;https://musescore.com/song/mr_blue_sky-2229954&quot;}}},&quot;is_ogg_supported&quot;:false,&quot;is_can_rate_score&quot;:false,&quot;is_author_blocked_you&quot;:false,&quot;similar_scores&quot;:[{&quot;id&quot;:5514306,&quot;title&quot;:&quot;Mr Blue Sky 1&quot;,&quot;url&quot;:&quot;/user/2128801/scores/5514306&quot;,&quot;rating&quot;:{&quot;count&quot;:33,&quot;rating&quot;:4.94000000000000039079850466805510222911834716796875},&quot;instruments&quot;:[{&quot;name&quot;:&quot;Piano&quot;}],&quot;instrumentations&quot;:[{&quot;name&quot;:&quot;Solo&quot;}],&quot;publisher&quot;:null},{&quot;id&quot;:6179596,&quot;title&quot;:&quot;Mr. Blue Sky For Trumpet and Trombone - Full Draft V1&quot;,&quot;url&quot;:&quot;/user/29081328/scores/6179596&quot;,&quot;rating&quot;:{&quot;count&quot;:22,&quot;rating&quot;:4.87999999999999989341858963598497211933135986328125},&quot;instruments&quot;:[{&quot;name&quot;:&quot;Trumpet in b-flat&quot;},{&quot;name&quot;:&quot;Trumpet in b-flat&quot;},{&quot;name&quot;:&quot;Trumpet in b-flat&quot;},{&quot;name&quot;:&quot;Trumpet in b-flat&quot;},{&quot;name&quot;:&quot;Trombone&quot;}],&quot;instrumentations&quot;:[{&quot;name&quot;:&quot;Mixed Quintet&quot;}],&quot;publisher&quot;:null},{&quot;id&quot;:1541026,&quot;title&quot;:&quot;Mr. Blue Sky (SATB + full rock band)&quot;,&quot;url&quot;:&quot;/user/1078716/scores/1541026&quot;,&quot;rating&quot;:{&quot;count&quot;:217,&quot;rating&quot;:4.79000000000000003552713678800500929355621337890625},&quot;instruments&quot;:[{&quot;name&quot;:&quot;Soprano&quot;},{&quot;name&quot;:&quot;Alto&quot;},{&quot;name&quot;:&quot;Tenor&quot;},{&quot;name&quot;:&quot;Bass voice&quot;},{&quot;name&quot;:&quot;Piano&quot;},{&quot;name&quot;:&quot;Bass guitar&quot;},{&quot;name&quot;:&quot;Piano&quot;},{&quot;name&quot;:&quot;Guitar&quot;},{&quot;name&quot;:&quot;Drum group&quot;}],&quot;instrumentations&quot;:[{&quot;name&quot;:&quot;Mixed Ensemble&quot;}],&quot;publisher&quot;:null}],&quot;scores_by_artist&quot;:[{&quot;id&quot;:6883723,&quot;title&quot;:&quot;Telephone Line - Electric Light Orchestra&quot;,&quot;url&quot;:&quot;/user/36070839/scores/6883723&quot;},{&quot;id&quot;:6871495,&quot;title&quot;:&quot;Roll over beethoven &ndash; Electric Light Orchestra&quot;,&quot;url&quot;:&quot;/user/29445253/scores/6871495&quot;},{&quot;id&quot;:7080684,&quot;title&quot;:&quot;Turn to stone &ndash; Electric Light Orchestra&quot;,&quot;url&quot;:&quot;/user/27323004/scores/7080684&quot;},{&quot;id&quot;:6782653,&quot;title&quot;:&quot;Electric Light Orchestra (ELO) - Don&#039;t bring me down &ndash; Piano solo sheet music / words&quot;,&quot;url&quot;:&quot;/user/35230830/scores/6782653&quot;},{&quot;id&quot;:1539666,&quot;title&quot;:&quot;Jeff Lynne - Evil Woman&quot;,&quot;url&quot;:&quot;/user/4764321/scores/1539666&quot;},{&quot;id&quot;:1604966,&quot;title&quot;:&quot;Electric Light Orchestra - Standin&#039; In The Rain (Piano)&quot;,&quot;url&quot;:&quot;/user/6761241/scores/1604966&quot;},{&quot;id&quot;:5282896,&quot;title&quot;:&quot;ELO - Mr Blue Sky (Hard) - Piano&quot;,&quot;url&quot;:&quot;/user/9332246/scores/5282896&quot;},{&quot;id&quot;:6851602,&quot;title&quot;:&quot;Last train to london &ndash; Electric Light Orchestra (Intermediate) - Piano&quot;,&quot;url&quot;:&quot;/user/33051378/scores/6851602&quot;},{&quot;id&quot;:2459311,&quot;title&quot;:&quot;Jeff Lynne - Strange Magic&quot;,&quot;url&quot;:&quot;/user/4764321/scores/2459311&quot;},{&quot;id&quot;:2459316,&quot;title&quot;:&quot;Jeff Lynne - Can&#039;t Get It Out Of My Head&quot;,&quot;url&quot;:&quot;/user/4764321/scores/2459316&quot;}],&quot;is_similar_scores_more&quot;:true,&quot;score_type&quot;:&quot;regular&quot;,&quot;is_bot&quot;:false,&quot;hidden&quot;:false,&quot;dispute_hidden&quot;:&quot;/contact?subject=An+appeal+against+the+hiding+of+my+score&amp;message=https%3A%2F%2Fmusescore.com%2Fuser%2F25863551%2Fscores%2F5180704&quot;,&quot;disable_hidden_url&quot;:&quot;/score/manage/hidden/admin/unhide?score_id=5180704&quot;,&quot;paywall&quot;:{&quot;has_instant_paywall&quot;:false,&quot;is_trial_user&quot;:false,&quot;provider_name&quot;:&quot;stripe&quot;,&quot;period&quot;:null},&quot;payment_account_id&quot;:null,&quot;complexity&quot;:0,&quot;is_xtz_supported&quot;:false,&quot;has_bought_by_credit&quot;:false,&quot;has_bought_by_one_time_payment&quot;:false,&quot;staff_like&quot;:null,&quot;open_mu_desktop&quot;:null,&quot;converted_score_handler&quot;:[],&quot;official_score&quot;:{&quot;url&quot;:&quot;/pro/landing/official-score?official_score_id=62966&amp;feature=official-from-score&quot;,&quot;price&quot;:4.9900000000000002131628207280300557613372802734375},&quot;score_blocked_by_country&quot;:false},&quot;header_bidding&quot;:[]}},&quot;globalHelpers&quot;:[],&quot;bidding&quot;:{&quot;analytics&quot;:{&quot;logUrl&quot;:&quot;//track.ultimate-guitar.com/ug/&quot;,&quot;pageType&quot;:&quot;score_desktop&quot;,&quot;region&quot;:&quot;ENSR&quot;,&quot;device&quot;:&quot;desktop&quot;,&quot;variation&quot;:null,&quot;hasHardRefresh&quot;:true},&quot;refresh&quot;:{&quot;limit&quot;:20,&quot;maxVisibleTime&quot;:1000,&quot;delay&quot;:30000,&quot;delayDeviation&quot;:0,&quot;enabled&quot;:true,&quot;hasHardRefresh&quot;:true,&quot;availableBidders&quot;:[&quot;appnexus&quot;,&quot;indexExchange&quot;,&quot;ix&quot;,&quot;pubmatic&quot;,&quot;rubicon&quot;,&quot;sonobi&quot;,&quot;openx&quot;,&quot;adform&quot;,&quot;aol&quot;,&quot;brealtime&quot;,&quot;audienceNetwork&quot;,&quot;improvedigital&quot;,&quot;adkernelAdn&quot;,&quot;districtM&quot;,&quot;oftmedia&quot;]},&quot;minRefreshCpm&quot;:0.040000000000000000832667268468867405317723751068115234375,&quot;cpmFloor&quot;:0.1499999999999999944488848768742172978818416595458984375,&quot;timeout&quot;:1500,&quot;dfpId&quot;:74268401,&quot;units&quot;:[{&quot;code&quot;:&quot;ad_cs_12219747_300_250&quot;,&quot;dfpCode&quot;:&quot;MS_ATF_300&quot;,&quot;sizes&quot;:[[300,250],[400,250]],&quot;placementId&quot;:&quot;12206052&quot;,&quot;layoutPlacement&quot;:&quot;top&quot;,&quot;platform&quot;:[&quot;desktop&quot;,&quot;mobile&quot;],&quot;mediaTypes&quot;:{&quot;banner&quot;:{&quot;sizes&quot;:[[300,250],[400,250]]}},&quot;dynamic&quot;:true,&quot;withoutBids&quot;:true,&quot;appnexusPlacementId&quot;:12219747,&quot;mediaType&quot;:&quot;banner&quot;,&quot;bids&quot;:[{&quot;bidder&quot;:&quot;appnexus&quot;,&quot;params&quot;:{&quot;placementId&quot;:12206052,&quot;keywords&quot;:{&quot;is_refresh&quot;:&quot;false&quot;,&quot;instruments&quot;:&quot;Trombone (2),Piano&quot;}}},{&quot;bidder&quot;:&quot;adform&quot;,&quot;params&quot;:{&quot;mid&quot;:&quot;488860&quot;}},{&quot;bidder&quot;:&quot;openx&quot;,&quot;params&quot;:{&quot;delDomain&quot;:&quot;ultimate-guitar-d.openx.net&quot;,&quot;unit&quot;:&quot;539356631&quot;}},{&quot;bidder&quot;:&quot;pubmatic&quot;,&quot;params&quot;:{&quot;adSlot&quot;:&quot;1178752_Musescore_ATF_300x250@300x250&quot;,&quot;publisherId&quot;:&quot;72623&quot;}},{&quot;bidder&quot;:&quot;rubicon&quot;,&quot;params&quot;:{&quot;accountId&quot;:&quot;15178&quot;,&quot;siteId&quot;:&quot;157280&quot;,&quot;zoneId&quot;:&quot;749504&quot;}},{&quot;bidder&quot;:&quot;onemobile&quot;,&quot;params&quot;:{&quot;dcn&quot;:&quot;8a9694b8017070f8309df8c44ba10020&quot;,&quot;pos&quot;:&quot;musescore_atf_300x250&quot;}}],&quot;refresh&quot;:{&quot;enabled&quot;:false},&quot;customTargeting&quot;:{&quot;ab_var_web_MU_3262&quot;:1}},{&quot;code&quot;:&quot;ad_cs_12219747_728_90&quot;,&quot;dfpCode&quot;:&quot;MS_ATF_728&quot;,&quot;sizes&quot;:[[728,90]],&quot;placementId&quot;:&quot;12206052&quot;,&quot;layoutPlacement&quot;:&quot;top&quot;,&quot;platform&quot;:[&quot;desktop&quot;],&quot;mediaTypes&quot;:{&quot;banner&quot;:{&quot;sizes&quot;:[[728,90]]}},&quot;appnexusPlacementId&quot;:12219747,&quot;mediaType&quot;:&quot;banner&quot;,&quot;bids&quot;:[{&quot;bidder&quot;:&quot;appnexus&quot;,&quot;params&quot;:{&quot;placementId&quot;:12206052,&quot;keywords&quot;:{&quot;is_refresh&quot;:&quot;false&quot;,&quot;instruments&quot;:&quot;Trombone (2),Piano&quot;}}},{&quot;bidder&quot;:&quot;adform&quot;,&quot;params&quot;:{&quot;pkey&quot;:&quot;FdixsW0PHG887JsiHgHXfxJ1&quot;}},{&quot;bidder&quot;:&quot;amazon&quot;,&quot;params&quot;:[]},{&quot;bidder&quot;:&quot;openx&quot;,&quot;params&quot;:{&quot;delDomain&quot;:&quot;ultimate-guitar-d.openx.net&quot;,&quot;unit&quot;:&quot;540214242&quot;}},{&quot;bidder&quot;:&quot;pubmatic&quot;,&quot;params&quot;:{&quot;adSlot&quot;:&quot;1521529&quot;,&quot;publisherId&quot;:&quot;72623&quot;}},{&quot;bidder&quot;:&quot;rubicon&quot;,&quot;params&quot;:{&quot;siteId&quot;:&quot;157280&quot;,&quot;accountId&quot;:&quot;15178&quot;,&quot;zoneId&quot;:&quot;749504&quot;}},{&quot;bidder&quot;:&quot;onemobile&quot;,&quot;params&quot;:{&quot;dcn&quot;:&quot;8a9694b8017070f8309df8c44ba10020&quot;,&quot;pos&quot;:&quot;musescore_atf_728x90&quot;}},{&quot;bidder&quot;:&quot;ix&quot;,&quot;params&quot;:{&quot;id&quot;:4,&quot;siteId&quot;:313492}}],&quot;customTargeting&quot;:{&quot;ab_var_web_MU_3262&quot;:1}}],&quot;refreshBidders&quot;:{},&quot;priceGranularity&quot;:[{&quot;precision&quot;:2,&quot;min&quot;:0,&quot;max&quot;:1,&quot;increment&quot;:0.01000000000000000020816681711721685132943093776702880859375},{&quot;precision&quot;:2,&quot;min&quot;:1,&quot;max&quot;:2,&quot;increment&quot;:0.0200000000000000004163336342344337026588618755340576171875},{&quot;precision&quot;:2,&quot;min&quot;:2,&quot;max&quot;:5,&quot;increment&quot;:0.05000000000000000277555756156289135105907917022705078125},{&quot;precision&quot;:2,&quot;min&quot;:5,&quot;max&quot;:10,&quot;increment&quot;:0.1000000000000000055511151231257827021181583404541015625},{&quot;precision&quot;:2,&quot;min&quot;:10,&quot;max&quot;:20,&quot;increment&quot;:0.200000000000000011102230246251565404236316680908203125},{&quot;precision&quot;:2,&quot;min&quot;:20,&quot;max&quot;:50,&quot;increment&quot;:0.5}],&quot;isGDPRAvailable&quot;:false,&quot;tcfVersion&quot;:2,&quot;dynamicLoad&quot;:true,&quot;apstagEnabled&quot;:true,&quot;isShowOnTap&quot;:false,&quot;prebidLibUrl&quot;:&quot;https://musescore.com/static/public/build/prebid_7_40_0/prebid_ver1692802572.js&quot;,&quot;showMePlayer&quot;:false}}"></div>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-                "login": 1,
-                "hasPro": 0,
-                "rights": 0,
-                "auth": "google",
-                "staticUrl": "\/watch_ver1692802572.js",
-                "counterId": 46196364
-            });
-        </script>
-        <!-- Google Tag Manager -->
-        <script>
-            (function(w, d, s, l, i) {
-                w[l] = w[l] || [];
-                w[l].push({
-                    'gtm.start': new Date().getTime(),
-                    event: 'gtm.js'
-                });
-                var f = d.getElementsByTagName(s)[0]
-                  , j = d.createElement(s)
-                  , dl = l != 'dataLayer' ? '&l=' + l : '';
-                j.async = true;
-                j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-                f.parentNode.insertBefore(j, f);
-            }
-            )(window, document, 'script', 'dataLayer', 'GTM-P46R4ZF');
-        </script>
-        <!-- End Google Tag Manager -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="content-language" content="en">
+        <meta name="external" content="true">
+        <meta name="distribution" content="Global">
+        <meta http-equiv="audience" content="General">
+        <meta name="theme-color" content="#fff">
+        <meta name="resource-type" content="Game"/>
+        <meta http-equiv="content-language" content="en"/>
+        <title>Cookie Clicker 2</title>
+        <meta name="title" content="Cookie Clicker 2">
+        <meta name="description" content="Cookie Clicker is the best idle game where you bake cookies to rule the universe! The game has no ads and you can play for free, no download or sign-in is required.">
+        <meta name="keywords" content="cookie clicker, cookie clicker online, cookie clicker io, cookie clicker game, cookie clicker 2 unblocked">
+        <meta name="news_keywords" content="cookie clicker, cookie clicker online, cookie clicker io, cookie clicker game, cookie clicker 2 unblocked">
+        <link rel="image_src" href="/upload/imgs/options/cookieclicker-logo.png">
+        <link rel="canonical" href="https://cookie-clicker2.com">
+        <link rel="icon" href="/upload/cache/upload/imgs/options/currency-m60x60.png"/>
+        <link rel="apple-touch-icon" href="/upload/cache/upload/imgs/options/currency-m60x60.png"/>
+        <link rel="apple-touch-icon" sizes="57x57" href="/upload/cache/upload/imgs/options/currency-m57x57.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/upload/cache/upload/imgs/options/currency-m72x72.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/upload/cache/upload/imgs/options/currency-m144x144.png">
+        <meta property="og:title" content="Cookie Clicker 2" itemprop="headline"/>
+        <meta property="og:type" content="article"/>
+        <meta property="og:url" itemprop="url" content="https://cookie-clicker2.com"/>
+        <meta property="og:image" itemprop="thumbnailUrl" content="/upload/imgs/options/cookieclicker-logo.png"/>
+        <meta property="og:description" content="Cookie Clicker is the best idle game where you bake cookies to rule the universe! The game has no ads and you can play for free, no download or sign-in is required." itemprop="description"/>
+        <meta property="og:site_name" content="Cookie Clicker 2"/>
+        <meta name="twitter:title" content="Cookie Clicker 2"/>
+        <meta name="twitter:url" content="https://cookie-clicker2.com"/>
+        <meta name="twitter:image" content="/upload/imgs/options/cookieclicker-logo.png"/>
+        <meta name="twitter:description" content="Cookie Clicker is the best idle game where you bake cookies to rule the universe! The game has no ads and you can play for free, no download or sign-in is required.">
+        <meta name="twitter:card" content="summary"/>
+        <link rel="stylesheet" type="text/css" href="/themes/cookie-clicker2/rs/css/all.css?v=2">
         <script>
             (function(i, s, o, g, r, a, m) {
-                i["GoogleAnalyticsObject"] = r;
+                i['GoogleAnalyticsObject'] = r;
                 i[r] = i[r] || function() {
                     (i[r].q = i[r].q || []).push(arguments)
                 }
@@ -477,85 +48,1307 @@
                 a.src = g;
                 m.parentNode.insertBefore(a, m)
             }
-            )(window, document, "script", "https://musescore.com/static/vendor/ga/analytics_ver1692802572.js", "ga");
+            )(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+            ga('create', 'UA-234613805-1', 'auto');
+            ga('send', 'pageview');
+        </script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-6E14DGWL1R"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
 
-            ga("create", "UA-11896755-1", {
-                "cookieDomain": "auto"
-            });
-            ga("set", "dimension1", "authenticated");
-            ga("send", "pageview");
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'G-6E14DGWL1R');
         </script>
-        <script type="application/ld+json">
-            {
-    "@context": "https:\/\/schema.org",
-    "@type": "MusicComposition",
-    "url": "https:\/\/musescore.com\/user\/25863551\/scores\/5180704",
-    "name": "Mr Blue Sky Trombone Duet",
-    "thumbnailUrl": "https:\/\/musescore.com\/static\/musescore\/scoredata\/g\/c6c12ddf1dd8d2a1b45b2e75a45a91cd3979980c\/score_0.svg?no-cache=1579687774",
-    "text": "Written by Electric Light Orchestra. Arranged for a trombone duet by me. Did this for solo and ensemble for me and a friend. please critique me. Purposely made it shorter than the original. Got some of the piano chords from other people on this site but mostly did it by ear.",
-    "composer": {
-        "@type": "Person"
-    },
-    "musicalKey": "F major, D minor",
-    "datePublished": "2018-07-30T18:40:56+00:00",
-    "dateModified": "2020-01-22T10:09:34+00:00",
-    "commentCount": 18,
-    "discussionUrl": "https:\/\/musescore.com\/user\/25863551\/scores\/5180704#comments"
-}
+        <script>
+            let id_game = '';
+            let url_game = '';
+            let keywords = '';
+            let tag_id = '';
+            let category_id = '';
+            let field_order = '';
+            let order_type = '';
+            let is_hot = '';
+            let is_new = '';
+            let slug_home = "";
         </script>
-        <script type="application/ld+json">
-            {
-    "@context": "https:\/\/schema.org",
-    "@type": "CreativeWork",
-    "name": "Mr Blue Sky Trombone Duet"
-}
+        <style>
+            .gridbody__left {
+                position: fixed;
+                z-index: 1;
+            }
+
+            .girdbody__right--iframe {
+                width: 100%;
+            }
+
+            .grid__innerframe {
+                align-items: center;
+            }
+
+            html::-webkit-scrollbar,body::-webkit-scrollbar {
+                display: none;
+            }
+
+            .throw-ads-160x600 {
+                display: none;
+            }
+
+            @media (min-width: 1038px) {
+                .throw-ads-160x600 {
+                    display: block;
+                }
+            }
+
+            .girdbody__right--iframe {
+                margin-bottom: 0;
+            }
+
+            .game__related {
+                display: none;
+                width: 100px;
+                min-width: 100px;
+                padding-left: 10px;
+            }
+
+            .game__related--link {
+                width: 100%;
+                position: relative;
+                margin-top: 10px;
+                display: block;
+                border-radius: 8px;
+                overflow: hidden;
+            }
+
+            .game__related--title {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                color: #fff;
+                background-color: rgba(0, 0, 0, .6);
+                font-size: 12px;
+                text-transform: capitalize;
+                box-sizing: border-box;
+                text-align: center;
+                padding: 3px;
+            }
+
+            @media (min-width: 1200px) {
+                .game__related {
+                    display:block;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <script type="text/javascript">
+            var themeurl = 'https://cookie-clicker2.com/themes/cookie-clicker2/';
+            function get_format_url(controller, action) {
+                var urlformat = '/:a:.:c:';
+                urlformat = urlformat.replace(':c:', controller);
+                return urlformat.replace(':a:', action);
+            }
         </script>
-        <script type="application/ld+json">
-            {
-    "@context": "https:\/\/schema.org",
-    "@type": "MusicRecording",
-    "name": "Mr. Blue Sky",
-    "datePublished": "2018-07-30T18:40:56+00:00",
-    "dateModified": "2020-01-22T10:09:34+00:00",
-    "url": "https:\/\/musescore.com\/user\/25863551\/scores\/5180704",
-    "aggregateRating": {
-        "@type": "AggregateRating",
-        "bestRating": "5",
-        "worstRating": "1",
-        "reviewCount": "94",
-        "ratingValue": "4.81"
-    }
-}
+        <style>
+            .menu__horizontal {
+                padding: 16px;
+                display: none;
+            }
+
+            .menu__horizontal--navigation {
+                margin-top: 16px;
+            }
+
+            .menu__horizontal--link {
+                padding: 8px;
+                border: 1px solid #ccc;
+                line-height: 1.5;
+                white-space: nowrap;
+                margin-right: 8px;
+                text-transform: uppercase;
+                border-radius: 8px;
+            }
+
+            .menu__horizontal--link .grid__header--navigation-link-image {
+                margin-right: 4px;
+            }
+
+            .menu__horizontal--link:hover .grid__header--navigation-title {
+                text-decoration: underline;
+            }
+
+            .footer__mobile {
+                display: none;
+                padding: 20px;
+                text-align: center;
+            }
+
+            .footer__mobile-link {
+                display: inline-block;
+                padding: 5px;
+            }
+
+            .footer__mobile-link:hover {
+                text-decoration: underline;
+            }
+
+            .gridbody__right {
+            }
+
+            @media (min-width: 1366px) {
+                .gridbody__right {
+                    height:unset;
+                }
+
+                .hidden__left {
+                    display: none!important
+                }
+
+                .menu__horizontal {
+                    display: block;
+                }
+
+                .gridbody__left {
+                    width: 0!important;
+                    padding: 0!important;
+                    min-width: 0!important;
+                    opacity: 0!important;
+                }
+
+                .footer__mobile {
+                    display: block;
+                }
+            }
+        </style>
+        <div class="menu__horizontal">
+            <div class="d-flex al sp menu__horizontal--bar">
+                <div class="menu__horizontal--logo">
+                    <a href="/" class="d-block">
+                        <img class="d-block" width height="26px" src="/upload/imgs/options/logo-cookie1.png" alt title/>
+                    </a>
+                </div>
+                <div class="menu__horizontal--searchbox">
+                    <div class="grid__header--search">
+                        <form class="d-flex grid__header--search-box" action="/search" method="GET">
+                            <button type="submit" aria-lable="search" class="center-box grid__header--search-submit">
+                                <svg fill="rgb(134, 151, 162)" version="1.1" width="16" height="16" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 511.999 511.999" style="enable-background:new 0 0 511.999 511.999;" xml:space="preserve">
+                                    <path d="M508.874,478.708L360.142,329.976c28.21-34.827,45.191-79.103,45.191-127.309c0-111.75-90.917-202.667-202.667-202.667 S0,90.917,0,202.667s90.917,202.667,202.667,202.667c48.206,0,92.482-16.982,127.309-45.191l148.732,148.732 c4.167,4.165,10.919,4.165,15.086,0l15.081-15.082C513.04,489.627,513.04,482.873,508.874,478.708z M202.667,362.667 c-88.229,0-160-71.771-160-160s71.771-160,160-160s160,71.771,160,160S290.896,362.667,202.667,362.667z"></path>
+                                </svg>
+                            </button>
+                            <input type="text" name="keywords" class="grid__header--search-input" placeholder="Search..." autocomplete="off"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex al menu__horizontal--navigation">
+                <a class="d-flex al menu__horizontal--link" href="/cookie-clicker-game">
+                    <div class="grid__header--navigation-title">Cookie Clicker Game</div>
+                </a>
+                <a class="d-flex al menu__horizontal--link" href="/games/clicker-games">
+                    <div class="grid__header--navigation-title">Clicker Games</div>
+                </a>
+                <a class="d-flex al menu__horizontal--link" href="/games/idle-games">
+                    <div class="grid__header--navigation-title">Idle Games</div>
+                </a>
+                <a class="d-flex al menu__horizontal--link" href="/games/io-games">
+                    <div class="grid__header--navigation-title">Io Games</div>
+                </a>
+                <a class="d-flex al menu__horizontal--link" href="/all-games">
+                    <div class="grid__header--navigation-title">All Games</div>
+                </a>
+                <a class="d-flex al menu__horizontal--link" href="/hot-games">
+                    <div class="grid__header--navigation-title">Hot Games</div>
+                </a>
+            </div>
+        </div>
+        <div class="d-flex gridbody">
+            <div class="gridbody__left hide__left">
+                <header>
+                    <div class="grid__header">
+                        <div class="grid__header--logo">
+                            <a href="/" class="d-block">
+                                <img class="d-block" width height="26px" src="/upload/imgs/options/logo-cookie1.png" alt="Cookie Clicker 2" title="Cookie Clicker 2"/>
+                            </a>
+                        </div>
+                        <hr class="line"/>
+                        <div class="grid__header--search">
+                            <form class="d-flex grid__header--search-box" action="/search" method="GET">
+                                <button type="submit" aria-lable="search" class="center-box grid__header--search-submit">
+                                    <svg fill="rgb(134, 151, 162)" version="1.1" width="16" height="16" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 511.999 511.999" style="enable-background:new 0 0 511.999 511.999;" xml:space="preserve">
+                                        <path d="M508.874,478.708L360.142,329.976c28.21-34.827,45.191-79.103,45.191-127.309c0-111.75-90.917-202.667-202.667-202.667 S0,90.917,0,202.667s90.917,202.667,202.667,202.667c48.206,0,92.482-16.982,127.309-45.191l148.732,148.732 c4.167,4.165,10.919,4.165,15.086,0l15.081-15.082C513.04,489.627,513.04,482.873,508.874,478.708z M202.667,362.667 c-88.229,0-160-71.771-160-160s71.771-160,160-160s160,71.771,160,160S290.896,362.667,202.667,362.667z"></path>
+                                    </svg>
+                                </button>
+                                <input type="text" name="keywords" class="grid__header--search-input" placeholder="Search..." autocomplete="off"/>
+                            </form>
+                        </div>
+                        <hr class="line"/>
+                        <div class="grid__header--navigation">
+                            <ul class="grid__header--navigation-list">
+                                <li class="grid__header--navigation-group">
+                                    <b>Game Library</b>
+                                </li>
+                                <li class="grid__header--navigation-item">
+                                    <a class="grid__header--navigation-link" href="/cookie-clicker-game">
+                                        <div class="grid__header--navigation-title">Cookie Clicker Game</div>
+                                    </a>
+                                </li>
+                                <li class="grid__header--navigation-item">
+                                    <a class="grid__header--navigation-link" href="/games/clicker-games">
+                                        <div class="grid__header--navigation-link-image">
+                                            <img src="/upload/cache/upload/imgs/click-icon12-m24x24.png" alt="Clicker Games" title="Clicker Games"/>
+                                        </div>
+                                        <div class="grid__header--navigation-title">Clicker Games</div>
+                                    </a>
+                                </li>
+                                <li class="grid__header--navigation-item">
+                                    <a class="grid__header--navigation-link" href="/games/idle-games">
+                                        <div class="grid__header--navigation-link-image">
+                                            <img src="/upload/cache/upload/imgs/idle-game-icon1-m24x24.png" alt="Idle Games" title="Idle Games"/>
+                                        </div>
+                                        <div class="grid__header--navigation-title">Idle Games</div>
+                                    </a>
+                                </li>
+                                <li class="grid__header--navigation-item">
+                                    <a class="grid__header--navigation-link" href="/games/io-games">
+                                        <div class="grid__header--navigation-link-image">
+                                            <img src="/upload/cache/upload/imgs/io-game-icon-m24x24.png" alt="Io Games" title="Io Games"/>
+                                        </div>
+                                        <div class="grid__header--navigation-title">Io Games</div>
+                                    </a>
+                                </li>
+                                <li class="grid__header--navigation-item">
+                                    <a class="grid__header--navigation-link" href="/all-games">
+                                        <div class="grid__header--navigation-link-image">
+                                            <img src="/upload/cache/upload/imgs/all-game-icon-m24x24.png" alt="All Games" title="All Games"/>
+                                        </div>
+                                        <div class="grid__header--navigation-title">All Games</div>
+                                    </a>
+                                </li>
+                                <li class="grid__header--navigation-item">
+                                    <a class="grid__header--navigation-link" href="/hot-games">
+                                        <div class="grid__header--navigation-link-image">
+                                            <img src="/upload/cache/upload/imgs/hot-game-icon1-m24x24.png" alt="Hot Games" title="Hot Games"/>
+                                        </div>
+                                        <div class="grid__header--navigation-title">Hot Games</div>
+                                    </a>
+                                </li>
+                                <li class="grid__header--navigation-group">
+                                    <b>Featured Games</b>
+                                </li>
+                            </ul>
+                        </div>
+                        <hr class="line"/>
+                        <nav class="grid__header--footer">
+                            <ul class="grid__header--footer-list">
+                                <li class="grid__header--footer-link">
+                                    <a class="link" href="/about-us">About us</a>
+                                </li>
+                                <li class="grid__header--footer-link">
+                                    <a class="link" href="/contact-us">Contact us</a>
+                                </li>
+                                <li class="grid__header--footer-link">
+                                    <a class="link" href="/privacy-policy">Privacy policy</a>
+                                </li>
+                                <li class="grid__header--footer-link">
+                                    <a class="link" href="/term-of-use">Term of use</a>
+                                </li>
+                                <li class="grid__header--footer-link">
+                                    <a class="link" href="/copyright-infringement-notice-procedure">Copyright infringement notice procedure</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </header>
+            </div>
+            <div class="gridbody__right">
+                <div class="girdbody__right--inner">
+                    <div class="throw-ads-728x90">
+                        <div class="ads">
+                            <div class="ads-margin">
+                                <div class="ads-title horizontal-title">Advertisement</div>
+                                <div class="ads" style="width: 728px; height:90px;">
+                                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-4658181883112071" data-ad-slot="7109173544"></ins>
+                                    <script>
+                                        (adsbygoogle = window.adsbygoogle || []).push({});
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex grid__innerframe">
+                        <div class="girdbody__right--iframe">
+                            <div class="girdbody__right--iframe-header">
+                                <div class="header-game">
+                                    <div class="box-header">
+                                        <div class="header-game--title">
+                                            <h1>Cookie Clicker 2</h1>
+                                        </div>
+                                        <div class="header-game-extend">
+                                            <span class="share-btn scale-anim" id="share-focus" onclick="showSharingBox()">
+                                                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 481.6 481.6" style="enable-background:new 0 0 481.6 481.6;" xml:space="preserve">
+                                                    <g>
+                                                        <path d="M381.6,309.4c-27.7,0-52.4,13.2-68.2,33.6l-132.3-73.9c3.1-8.9,4.8-18.5,4.8-28.4c0-10-1.7-19.5-4.9-28.5l132.2-73.8		c15.7,20.5,40.5,33.8,68.3,33.8c47.4,0,86.1-38.6,86.1-86.1S429,0,381.5,0s-86.1,38.6-86.1,86.1c0,10,1.7,19.6,4.9,28.5		l-132.1,73.8c-15.7-20.6-40.5-33.8-68.3-33.8c-47.4,0-86.1,38.6-86.1,86.1s38.7,86.1,86.2,86.1c27.8,0,52.6-13.3,68.4-33.9		l132.2,73.9c-3.2,9-5,18.7-5,28.7c0,47.4,38.6,86.1,86.1,86.1s86.1-38.6,86.1-86.1S429.1,309.4,381.6,309.4z M381.6,27.1		c32.6,0,59.1,26.5,59.1,59.1s-26.5,59.1-59.1,59.1s-59.1-26.5-59.1-59.1S349.1,27.1,381.6,27.1z M100,299.8		c-32.6,0-59.1-26.5-59.1-59.1s26.5-59.1,59.1-59.1s59.1,26.5,59.1,59.1S132.5,299.8,100,299.8z M381.6,454.5		c-32.6,0-59.1-26.5-59.1-59.1c0-32.6,26.5-59.1,59.1-59.1s59.1,26.5,59.1,59.1C440.7,428,414.2,454.5,381.6,454.5z"/>
+                                                    </g>
+                                                    <g></g>
+                                                    <g></g>
+                                                    <g></g>
+                                                    <g></g>
+                                                    <g></g>
+                                                    <g></g>
+                                                    <g></g>
+                                                    <g></g>
+                                                    <g></g>
+                                                    <g></g>
+                                                    <g></g>
+                                                    <g></g>
+                                                    <g></g>
+                                                    <g></g>
+                                                    <g></g>
+                                                </svg>
+                                            </span>
+                                            <span class="comment-btn scale-anim" id="comment-focus" onclick="scrollToDiv(&quot;.comment-company&quot;)">
+                                                <svg viewBox="-21 -47 682.66669 682" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="m552.011719-1.332031h-464.023438c-48.515625 0-87.988281 39.464843-87.988281 87.988281v283.972656c0 48.414063 39.300781 87.816406 87.675781 87.988282v128.863281l185.191407-128.863281h279.144531c48.515625 0 87.988281-39.472657 87.988281-87.988282v-283.972656c0-48.523438-39.472656-87.988281-87.988281-87.988281zm50.488281 371.960937c0 27.835938-22.648438 50.488282-50.488281 50.488282h-290.910157l-135.925781 94.585937v-94.585937h-37.1875c-27.839843 0-50.488281-22.652344-50.488281-50.488282v-283.972656c0-27.84375 22.648438-50.488281 50.488281-50.488281h464.023438c27.839843 0 50.488281 22.644531 50.488281 50.488281zm0 0"/>
+                                                    <path d="m171.292969 131.171875h297.414062v37.5h-297.414062zm0 0"/>
+                                                    <path d="m171.292969 211.171875h297.414062v37.5h-297.414062zm0 0"/>
+                                                    <path d="m171.292969 291.171875h297.414062v37.5h-297.414062zm0 0"/>
+                                                </svg>
+                                            </span>
+                                            <span class="expand-btn scale-anim" id="expand">
+                                                <svg version="1.1" x="0px" y="0px" viewBox="0 0 384.97 384.97" style="enable-background:new 0 0 384.97 384.97;" xml:space="preserve">
+                                                    <g>
+                                                        <g id="Fullscreen">
+                                                            <path d="M384.97,12.03c0-6.713-5.317-12.03-12.03-12.03H264.847c-6.833,0-11.922,5.39-11.934,12.223			c0,6.821,5.101,11.838,11.934,11.838h96.062l-0.193,96.519c0,6.833,5.197,12.03,12.03,12.03c6.833-0.012,12.03-5.197,12.03-12.03			l0.193-108.369c0-0.036-0.012-0.06-0.012-0.084C384.958,12.09,384.97,12.066,384.97,12.03z"/>
+                                                            <path d="M120.496,0H12.403c-0.036,0-0.06,0.012-0.096,0.012C12.283,0.012,12.247,0,12.223,0C5.51,0,0.192,5.317,0.192,12.03			L0,120.399c0,6.833,5.39,11.934,12.223,11.934c6.821,0,11.838-5.101,11.838-11.934l0.192-96.339h96.242			c6.833,0,12.03-5.197,12.03-12.03C132.514,5.197,127.317,0,120.496,0z"/>
+                                                            <path d="M120.123,360.909H24.061v-96.242c0-6.833-5.197-12.03-12.03-12.03S0,257.833,0,264.667v108.092			c0,0.036,0.012,0.06,0.012,0.084c0,0.036-0.012,0.06-0.012,0.096c0,6.713,5.317,12.03,12.03,12.03h108.092			c6.833,0,11.922-5.39,11.934-12.223C132.057,365.926,126.956,360.909,120.123,360.909z"/>
+                                                            <path d="M372.747,252.913c-6.833,0-11.85,5.101-11.838,11.934v96.062h-96.242c-6.833,0-12.03,5.197-12.03,12.03			s5.197,12.03,12.03,12.03h108.092c0.036,0,0.06-0.012,0.084-0.012c0.036-0.012,0.06,0.012,0.096,0.012			c6.713,0,12.03-5.317,12.03-12.03V264.847C384.97,258.014,379.58,252.913,372.747,252.913z"/>
+                                                        </g>
+                                                    </g>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="exit-fullscreen hidden" id="_exit_full_screen">
+                                    <svg fill="#fff" width="24" height="24" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512.001 512.001" style="enable-background:new 0 0 512.001 512.001;">
+                                        <g>
+                                            <g>
+                                                <path d="M284.286,256.002L506.143,34.144c7.811-7.811,7.811-20.475,0-28.285c-7.811-7.81-20.475-7.811-28.285,0L256,227.717 L34.143,5.859c-7.811-7.811-20.475-7.811-28.285,0c-7.81,7.811-7.811,20.475,0,28.285l221.857,221.857L5.858,477.859 c-7.811,7.811-7.811,20.475,0,28.285c3.905,3.905,9.024,5.857,14.143,5.857c5.119,0,10.237-1.952,14.143-5.857L256,284.287 l221.857,221.857c3.905,3.905,9.024,5.857,14.143,5.857s10.237-1.952,14.143-5.857c7.811-7.811,7.811-20.475,0-28.285 L284.286,256.002z"/>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                </span>
+                                <div class="clipboard-share hide-zindex">
+                                    <div class="inline-sharing-box">
+                                        <h3>
+                                            Share <b>Cookie Clicker 2</b>
+                                        </h3>
+                                        <div class="sharethis-inline-share-buttons"></div>
+                                    </div>
+                                </div>
+                                <div class="close-sharing-box" onclick="closeBox()"></div>
+                            </div>
+                            <iframe id="iframehtml5" class="d-block" title="Cookie Clicker 2" width="100%" height="100%" target="_parent" src="/cookie-clicker-2.embed" frameborder="0" border="0" scrolling="no" class="iframe-default" allowfullscreen></iframe>
+                        </div>
+                        <div class="game__related">
+                            <a class="game__related--link" href="/cookie-clicker-game">
+                                <img class="d-block" width="90" height="70" src="/upload/cache/upload/imgs/cookie-clicker-game-m90x70.jpg" alt="Cookie Clicker Game" title="Cookie Clicker Game"/>
+                                <span class="text-overflow game__related--title">Cookie Clicker Game</span>
+                            </a>
+                            <a class="game__related--link" href="/cookie-clicker-1">
+                                <img class="d-block" width="90" height="70" src="/upload/cache/upload/imgs/perfectcookie-m90x70.png" alt="Cookie Clicker 1" title="Cookie Clicker 1"/>
+                                <span class="text-overflow game__related--title">Cookie Clicker 1</span>
+                            </a>
+                            <a class="game__related--link" href="/cookie-clicker-5">
+                                <img class="d-block" width="90" height="70" src="/upload/cache/upload/imgs/cookie-clicker-5-game-m90x70.jpg" alt="Cookie Clicker 5" title="Cookie Clicker 5"/>
+                                <span class="text-overflow game__related--title">Cookie Clicker 5</span>
+                            </a>
+                            <a class="game__related--link" href="/tube-clicker">
+                                <img class="d-block" width="90" height="70" src="/upload/cache/upload/imgs/tube-clicker2-m90x70.jpg" alt="Tube Clicker" title="Tube Clicker"/>
+                                <span class="text-overflow game__related--title">Tube Clicker</span>
+                            </a>
+                            <a class="game__related--link" href="/drive-mad">
+                                <img class="d-block" width="90" height="70" src="/upload/cache/upload/imgs/drive-mad-game-m90x70.jpg" alt="Drive Mad" title="Drive Mad"/>
+                                <span class="text-overflow game__related--title">Drive Mad</span>
+                            </a>
+                            <a class="game__related--link" href="/subway-surfers">
+                                <img class="d-block" width="90" height="70" src="/upload/cache/upload/imgs/subway-surfers-m90x70.jpg" alt="Subway Surfers" title="Subway Surfers"/>
+                                <span class="text-overflow game__related--title">Subway Surfers</span>
+                            </a>
+                            <a class="game__related--link" href="/pizza-clicker">
+                                <img class="d-block" width="90" height="70" src="/upload/cache/upload/imgs/pizza-clicker-tycoon-512x384-m90x70.jpg" alt="Pizza Clicker" title="Pizza Clicker"/>
+                                <span class="text-overflow game__related--title">Pizza Clicker</span>
+                            </a>
+                            <a class="game__related--link" href="/bitlife-life-simulator">
+                                <img class="d-block" width="90" height="70" src="/upload/cache/upload/imgs/bitlife-life-simulator-m90x70.jpeg" alt="BitLife Life Simulator" title="BitLife Life Simulator"/>
+                                <span class="text-overflow game__related--title">BitLife Life Simulator</span>
+                            </a>
+                        </div>
+                        <div class="throw-ads-160x600" style="margin-left:16px">
+                            <div class="ads">
+                                <div class="ads-margin">
+                                    <div class="ads-title">Advertisement</div>
+                                    <div class="ads" style="width: 160px; height:600px;">
+                                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                        <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-4658181883112071" data-ad-slot="5492839543"></ins>
+                                        <script>
+                                            (adsbygoogle = window.adsbygoogle || []).push({});
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="girdbody__right--listgame">
+                        <h3>Similar Games</h3>
+                        <div class="grid__clayover">
+                            <div class="grid__clayover--game">
+                                <div class="grid__game--image">
+                                    <a class="d-block" href="/cookie-clicker-game">
+                                        <img width="250" height="195" src="/upload/cache/upload/imgs/cookie-clicker-game-m250x195.jpg" title="Cookie Clicker Game" alt="Cookie Clicker Game"/>
+                                    </a>
+                                    <a class="center-box grid__game--layer" href="/cookie-clicker-game">
+                                        <div class="center-box grid__game--play">
+                                            <img width="20" height="20" src="/themes/cookie-clicker2/rs/imgs/play.svg" alt="play" title="play"/>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="grid__game--title">
+                                    <a href="/cookie-clicker-game">
+                                        <span class="text-overflow">Cookie Clicker Game</span>
+                                    </a>
+                                </div>
+                                <div class="grid__game--category">
+                                    <a href="/games/clicker-games">
+                                        <span class="text-overflow">Clicker Games</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="grid__clayover--game throw-ads-250x250">
+                                <div class="ads">
+                                    <div class="ads-margin">
+                                        <div class="ads" style="width: 250px; height:250px;">
+                                            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                            <ins class="adsbygoogle" style="display:inline-block;width:250px;height:250px" data-ad-client="ca-pub-4658181883112071" data-ad-slot="5492839543"></ins>
+                                            <script>
+                                                (adsbygoogle = window.adsbygoogle || []).push({});
+                                            </script>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid__clayover--game">
+                                <div class="grid__game--image">
+                                    <a class="d-block" href="/cookie-clicker-1">
+                                        <img width="250" height="195" src="/upload/cache/upload/imgs/perfectcookie-m250x195.png" title="Cookie Clicker 1" alt="Cookie Clicker 1"/>
+                                    </a>
+                                    <a class="center-box grid__game--layer" href="/cookie-clicker-1">
+                                        <div class="center-box grid__game--play">
+                                            <img width="20" height="20" src="/themes/cookie-clicker2/rs/imgs/play.svg" alt="play" title="play"/>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="grid__game--title">
+                                    <a href="/cookie-clicker-1">
+                                        <span class="text-overflow">Cookie Clicker 1</span>
+                                    </a>
+                                </div>
+                                <div class="grid__game--category">
+                                    <a href="/games/clicker-games">
+                                        <span class="text-overflow">Clicker Games</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="grid__clayover--game">
+                                <div class="grid__game--image">
+                                    <a class="d-block" href="/cookie-clicker-5">
+                                        <img width="250" height="195" src="/upload/cache/upload/imgs/cookie-clicker-5-game-m250x195.jpg" title="Cookie Clicker 5" alt="Cookie Clicker 5"/>
+                                    </a>
+                                    <a class="center-box grid__game--layer" href="/cookie-clicker-5">
+                                        <div class="center-box grid__game--play">
+                                            <img width="20" height="20" src="/themes/cookie-clicker2/rs/imgs/play.svg" alt="play" title="play"/>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="grid__game--title">
+                                    <a href="/cookie-clicker-5">
+                                        <span class="text-overflow">Cookie Clicker 5</span>
+                                    </a>
+                                </div>
+                                <div class="grid__game--category">
+                                    <a href="/games/clicker-games">
+                                        <span class="text-overflow">Clicker Games</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="grid__clayover--game">
+                                <div class="grid__game--image">
+                                    <a class="d-block" href="/tube-clicker">
+                                        <img width="250" height="195" src="/upload/cache/upload/imgs/tube-clicker2-m250x195.jpg" title="Tube Clicker" alt="Tube Clicker"/>
+                                    </a>
+                                    <a class="center-box grid__game--layer" href="/tube-clicker">
+                                        <div class="center-box grid__game--play">
+                                            <img width="20" height="20" src="/themes/cookie-clicker2/rs/imgs/play.svg" alt="play" title="play"/>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="grid__game--title">
+                                    <a href="/tube-clicker">
+                                        <span class="text-overflow">Tube Clicker</span>
+                                    </a>
+                                </div>
+                                <div class="grid__game--category">
+                                    <a href="/games/clicker-games">
+                                        <span class="text-overflow">Clicker Games</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="grid__clayover--game">
+                                <div class="grid__game--image">
+                                    <a class="d-block" href="/retro-bowl">
+                                        <img width="250" height="195" src="/upload/cache/upload/imgs/retro-bowl-game-m250x195.jpg" title="Retro Bowl" alt="Retro Bowl"/>
+                                    </a>
+                                    <a class="center-box grid__game--layer" href="/retro-bowl">
+                                        <div class="center-box grid__game--play">
+                                            <img width="20" height="20" src="/themes/cookie-clicker2/rs/imgs/play.svg" alt="play" title="play"/>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="grid__game--title">
+                                    <a href="/retro-bowl">
+                                        <span class="text-overflow">Retro Bowl</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="grid__clayover--game">
+                                <div class="grid__game--image">
+                                    <a class="d-block" href="/subway-surfers">
+                                        <img width="250" height="195" src="/upload/cache/upload/imgs/subway-surfers-m250x195.jpg" title="Subway Surfers" alt="Subway Surfers"/>
+                                    </a>
+                                    <a class="center-box grid__game--layer" href="/subway-surfers">
+                                        <div class="center-box grid__game--play">
+                                            <img width="20" height="20" src="/themes/cookie-clicker2/rs/imgs/play.svg" alt="play" title="play"/>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="grid__game--title">
+                                    <a href="/subway-surfers">
+                                        <span class="text-overflow">Subway Surfers</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="grid__clayover--game">
+                                <div class="grid__game--image">
+                                    <a class="d-block" href="/cookie-clicker-3">
+                                        <img width="250" height="195" src="/upload/cache/upload/imgs/cookie-clicker-3-m250x195.jpg" title="Cookie Clicker 3" alt="Cookie Clicker 3"/>
+                                    </a>
+                                    <a class="center-box grid__game--layer" href="/cookie-clicker-3">
+                                        <div class="center-box grid__game--play">
+                                            <img width="20" height="20" src="/themes/cookie-clicker2/rs/imgs/play.svg" alt="play" title="play"/>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="grid__game--title">
+                                    <a href="/cookie-clicker-3">
+                                        <span class="text-overflow">Cookie Clicker 3</span>
+                                    </a>
+                                </div>
+                                <div class="grid__game--category">
+                                    <a href="/games/clicker-games">
+                                        <span class="text-overflow">Clicker Games</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="grid__clayover--game">
+                                <div class="grid__game--image">
+                                    <a class="d-block" href="/bitlife-life-simulator">
+                                        <img width="250" height="195" src="/upload/cache/upload/imgs/bitlife-life-simulator-m250x195.jpeg" title="BitLife Life Simulator" alt="BitLife Life Simulator"/>
+                                    </a>
+                                    <a class="center-box grid__game--layer" href="/bitlife-life-simulator">
+                                        <div class="center-box grid__game--play">
+                                            <img width="20" height="20" src="/themes/cookie-clicker2/rs/imgs/play.svg" alt="play" title="play"/>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="grid__game--title">
+                                    <a href="/bitlife-life-simulator">
+                                        <span class="text-overflow">BitLife Life Simulator</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="grid__clayover--game">
+                                <div class="grid__game--image">
+                                    <a class="d-block" href="/fall-guys">
+                                        <img width="250" height="195" src="/upload/cache/upload/imgs/fall-guys-m250x195.jpg" title="Fall Guys" alt="Fall Guys"/>
+                                    </a>
+                                    <a class="center-box grid__game--layer" href="/fall-guys">
+                                        <div class="center-box grid__game--play">
+                                            <img width="20" height="20" src="/themes/cookie-clicker2/rs/imgs/play.svg" alt="play" title="play"/>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="grid__game--title">
+                                    <a href="/fall-guys">
+                                        <span class="text-overflow">Fall Guys</span>
+                                    </a>
+                                </div>
+                                <div class="grid__game--category">
+                                    <a href="/games/io-games">
+                                        <span class="text-overflow">Io Games</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="grid__clayover--game">
+                                <div class="grid__game--image">
+                                    <a class="d-block" href="/pizza-clicker">
+                                        <img width="250" height="195" src="/upload/cache/upload/imgs/pizza-clicker-tycoon-512x384-m250x195.jpg" title="Pizza Clicker" alt="Pizza Clicker"/>
+                                    </a>
+                                    <a class="center-box grid__game--layer" href="/pizza-clicker">
+                                        <div class="center-box grid__game--play">
+                                            <img width="20" height="20" src="/themes/cookie-clicker2/rs/imgs/play.svg" alt="play" title="play"/>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="grid__game--title">
+                                    <a href="/pizza-clicker">
+                                        <span class="text-overflow">Pizza Clicker</span>
+                                    </a>
+                                </div>
+                                <div class="grid__game--category">
+                                    <a href="/games/clicker-games">
+                                        <span class="text-overflow">Clicker Games</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="grid__clayover--game">
+                                <div class="grid__game--image">
+                                    <a class="d-block" href="/cookie-clicker-4">
+                                        <img width="250" height="195" src="/upload/cache/upload/imgs/cookie-clicker-4-m250x195.jpg" title="Cookie Clicker 4" alt="Cookie Clicker 4"/>
+                                    </a>
+                                    <a class="center-box grid__game--layer" href="/cookie-clicker-4">
+                                        <div class="center-box grid__game--play">
+                                            <img width="20" height="20" src="/themes/cookie-clicker2/rs/imgs/play.svg" alt="play" title="play"/>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="grid__game--title">
+                                    <a href="/cookie-clicker-4">
+                                        <span class="text-overflow">Cookie Clicker 4</span>
+                                    </a>
+                                </div>
+                                <div class="grid__game--category">
+                                    <a href="/games/clicker-games">
+                                        <span class="text-overflow">Clicker Games</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="grid__clayover--game">
+                                <div class="grid__game--image">
+                                    <a class="d-block" href="/drive-mad">
+                                        <img width="250" height="195" src="/upload/cache/upload/imgs/drive-mad-game-m250x195.jpg" title="Drive Mad" alt="Drive Mad"/>
+                                    </a>
+                                    <a class="center-box grid__game--layer" href="/drive-mad">
+                                        <div class="center-box grid__game--play">
+                                            <img width="20" height="20" src="/themes/cookie-clicker2/rs/imgs/play.svg" alt="play" title="play"/>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="grid__game--title">
+                                    <a href="/drive-mad">
+                                        <span class="text-overflow">Drive Mad</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="grid__clayover--game">
+                                <div class="grid__game--image">
+                                    <a class="d-block" href="/room-clicker">
+                                        <img width="250" height="195" src="/upload/cache/upload/imgs/room-clicker-m250x195.jpg" title="Room Clicker" alt="Room Clicker"/>
+                                    </a>
+                                    <a class="center-box grid__game--layer" href="/room-clicker">
+                                        <div class="center-box grid__game--play">
+                                            <img width="20" height="20" src="/themes/cookie-clicker2/rs/imgs/play.svg" alt="play" title="play"/>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="grid__game--title">
+                                    <a href="/room-clicker">
+                                        <span class="text-overflow">Room Clicker</span>
+                                    </a>
+                                </div>
+                                <div class="grid__game--category">
+                                    <a href="/games/clicker-games">
+                                        <span class="text-overflow">Clicker Games</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="grid__clayover--game">
+                                <div class="grid__game--image">
+                                    <a class="d-block" href="/idle-mining-empire">
+                                        <img width="250" height="195" src="/upload/cache/upload/imgs/idle-mining-empire-m250x195.jpeg" title="Idle Mining Empire" alt="Idle Mining Empire"/>
+                                    </a>
+                                    <a class="center-box grid__game--layer" href="/idle-mining-empire">
+                                        <div class="center-box grid__game--play">
+                                            <img width="20" height="20" src="/themes/cookie-clicker2/rs/imgs/play.svg" alt="play" title="play"/>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="grid__game--title">
+                                    <a href="/idle-mining-empire">
+                                        <span class="text-overflow">Idle Mining Empire</span>
+                                    </a>
+                                </div>
+                                <div class="grid__game--category">
+                                    <a href="/games/idle-games">
+                                        <span class="text-overflow">Idle Games</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="girdbody__right--listgame">
+                        <h3>New Games</h3>
+                        <div class="grid__clayover">
+                            <div class="grid__clayover--game">
+                                <div class="grid__game--image">
+                                    <a class="d-block" href="/incredibox">
+                                        <img width="250" height="195" src="/upload/cache/upload/imgs/incredibox-m250x195.jpg" title="Incredibox" alt="Incredibox"/>
+                                    </a>
+                                    <a class="center-box grid__game--layer" href="/incredibox">
+                                        <div class="center-box grid__game--play">
+                                            <img width="20" height="20" src="/themes/cookie-clicker2/rs/imgs/play.svg" alt="play" title="play"/>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="grid__game--title">
+                                    <a href="/incredibox">
+                                        <span class="text-overflow">Incredibox</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="grid__clayover--game">
+                                <div class="grid__game--image">
+                                    <a class="d-block" href="/pizza-tower">
+                                        <img width="250" height="195" src="/upload/cache/upload/imgs/pizza-tower.jpg1-m250x195.JPG" title="Pizza Tower" alt="Pizza Tower"/>
+                                    </a>
+                                    <a class="center-box grid__game--layer" href="/pizza-tower">
+                                        <div class="center-box grid__game--play">
+                                            <img width="20" height="20" src="/themes/cookie-clicker2/rs/imgs/play.svg" alt="play" title="play"/>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="grid__game--title">
+                                    <a href="/pizza-tower">
+                                        <span class="text-overflow">Pizza Tower</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="grid__clayover--game">
+                                <div class="grid__game--image">
+                                    <a class="d-block" href="/connect-4">
+                                        <img width="250" height="195" src="/upload/cache/upload/imgs/connect-4.jpg1-m250x195.JPG" title="Connect 4" alt="Connect 4"/>
+                                    </a>
+                                    <a class="center-box grid__game--layer" href="/connect-4">
+                                        <div class="center-box grid__game--play">
+                                            <img width="20" height="20" src="/themes/cookie-clicker2/rs/imgs/play.svg" alt="play" title="play"/>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="grid__game--title">
+                                    <a href="/connect-4">
+                                        <span class="text-overflow">Connect 4</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="grid__clayover--game">
+                                <div class="grid__game--image">
+                                    <a class="d-block" href="/life-the-game">
+                                        <img width="250" height="195" src="/upload/cache/upload/imgs/life-the-game-m250x195.jpg" title="Life The Game" alt="Life The Game"/>
+                                    </a>
+                                    <a class="center-box grid__game--layer" href="/life-the-game">
+                                        <div class="center-box grid__game--play">
+                                            <img width="20" height="20" src="/themes/cookie-clicker2/rs/imgs/play.svg" alt="play" title="play"/>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="grid__game--title">
+                                    <a href="/life-the-game">
+                                        <span class="text-overflow">Life The Game</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="grid__clayover--game">
+                                <div class="grid__game--image">
+                                    <a class="d-block" href="/minecraft-classic">
+                                        <img width="250" height="195" src="/upload/cache/upload/imgs/minecraft-classic-m250x195.jpg" title="Minecraft Classic" alt="Minecraft Classic"/>
+                                    </a>
+                                    <a class="center-box grid__game--layer" href="/minecraft-classic">
+                                        <div class="center-box grid__game--play">
+                                            <img width="20" height="20" src="/themes/cookie-clicker2/rs/imgs/play.svg" alt="play" title="play"/>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="grid__game--title">
+                                    <a href="/minecraft-classic">
+                                        <span class="text-overflow">Minecraft Classic</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="grid__clayover--game">
+                                <div class="grid__game--image">
+                                    <a class="d-block" href="/dinosaur-game">
+                                        <img width="250" height="195" src="/upload/cache/upload/imgs/dinosaur-game-m250x195.jpg" title="Dinosaur Game" alt="Dinosaur Game"/>
+                                    </a>
+                                    <a class="center-box grid__game--layer" href="/dinosaur-game">
+                                        <div class="center-box grid__game--play">
+                                            <img width="20" height="20" src="/themes/cookie-clicker2/rs/imgs/play.svg" alt="play" title="play"/>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="grid__game--title">
+                                    <a href="/dinosaur-game">
+                                        <span class="text-overflow">Dinosaur Game</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="grid__clayover--game">
+                                <div class="grid__game--image">
+                                    <a class="d-block" href="/drift-hunters">
+                                        <img width="250" height="195" src="/upload/cache/upload/imgs/drift-hunters-m250x195.jpg" title="Drift Hunters" alt="Drift Hunters"/>
+                                    </a>
+                                    <a class="center-box grid__game--layer" href="/drift-hunters">
+                                        <div class="center-box grid__game--play">
+                                            <img width="20" height="20" src="/themes/cookie-clicker2/rs/imgs/play.svg" alt="play" title="play"/>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="grid__game--title">
+                                    <a href="/drift-hunters">
+                                        <span class="text-overflow">Drift Hunters</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="grid__clayover--game">
+                                <div class="grid__game--image">
+                                    <a class="d-block" href="/pacman-30th-anniversary">
+                                        <img width="250" height="195" src="/upload/cache/upload/imgs/pacman-30th-anniversary-m250x195.png" title="Pacman 30th Anniversary" alt="Pacman 30th Anniversary"/>
+                                    </a>
+                                    <a class="center-box grid__game--layer" href="/pacman-30th-anniversary">
+                                        <div class="center-box grid__game--play">
+                                            <img width="20" height="20" src="/themes/cookie-clicker2/rs/imgs/play.svg" alt="play" title="play"/>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="grid__game--title">
+                                    <a href="/pacman-30th-anniversary">
+                                        <span class="text-overflow">Pacman 30th Anniversary</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="grid__clayover--game">
+                                <div class="grid__game--image">
+                                    <a class="d-block" href="/drive-mad">
+                                        <img width="250" height="195" src="/upload/cache/upload/imgs/drive-mad-game-m250x195.jpg" title="Drive Mad" alt="Drive Mad"/>
+                                    </a>
+                                    <a class="center-box grid__game--layer" href="/drive-mad">
+                                        <div class="center-box grid__game--play">
+                                            <img width="20" height="20" src="/themes/cookie-clicker2/rs/imgs/play.svg" alt="play" title="play"/>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="grid__game--title">
+                                    <a href="/drive-mad">
+                                        <span class="text-overflow">Drive Mad</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="grid__clayover--game">
+                                <div class="grid__game--image">
+                                    <a class="d-block" href="/cookie-clicker-game">
+                                        <img width="250" height="195" src="/upload/cache/upload/imgs/cookie-clicker-game-m250x195.jpg" title="Cookie Clicker Game" alt="Cookie Clicker Game"/>
+                                    </a>
+                                    <a class="center-box grid__game--layer" href="/cookie-clicker-game">
+                                        <div class="center-box grid__game--play">
+                                            <img width="20" height="20" src="/themes/cookie-clicker2/rs/imgs/play.svg" alt="play" title="play"/>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="grid__game--title">
+                                    <a href="/cookie-clicker-game">
+                                        <span class="text-overflow">Cookie Clicker Game</span>
+                                    </a>
+                                </div>
+                                <div class="grid__game--category">
+                                    <a href="/games/clicker-games">
+                                        <span class="text-overflow">Clicker Games</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="grid__clayover--game">
+                                <div class="grid__game--image">
+                                    <a class="d-block" href="/stickman-home-escape">
+                                        <img width="250" height="195" src="/upload/cache/upload/imgs/stickman-home-escape-m250x195.jpg" title="Stickman Home Escape" alt="Stickman Home Escape"/>
+                                    </a>
+                                    <a class="center-box grid__game--layer" href="/stickman-home-escape">
+                                        <div class="center-box grid__game--play">
+                                            <img width="20" height="20" src="/themes/cookie-clicker2/rs/imgs/play.svg" alt="play" title="play"/>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="grid__game--title">
+                                    <a href="/stickman-home-escape">
+                                        <span class="text-overflow">Stickman Home Escape</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="grid__clayover--game">
+                                <div class="grid__game--image">
+                                    <a class="d-block" href="/tribalsio">
+                                        <img width="250" height="195" src="/upload/cache/upload/imgs/tribals-io-game-m250x195.jpg" title="Tribals.io" alt="Tribals.io"/>
+                                    </a>
+                                    <a class="center-box grid__game--layer" href="/tribalsio">
+                                        <div class="center-box grid__game--play">
+                                            <img width="20" height="20" src="/themes/cookie-clicker2/rs/imgs/play.svg" alt="play" title="play"/>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="grid__game--title">
+                                    <a href="/tribalsio">
+                                        <span class="text-overflow">Tribals.io</span>
+                                    </a>
+                                </div>
+                                <div class="grid__game--category">
+                                    <a href="/games/io-games">
+                                        <span class="text-overflow">Io Games</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="grid__clayover--game">
+                                <div class="grid__game--image">
+                                    <a class="d-block" href="/idle-hypermart-empire">
+                                        <img width="250" height="195" src="/upload/cache/upload/imgs/idle-hypermart-empire-m250x195.jpg" title="Idle Hypermart Empire" alt="Idle Hypermart Empire"/>
+                                    </a>
+                                    <a class="center-box grid__game--layer" href="/idle-hypermart-empire">
+                                        <div class="center-box grid__game--play">
+                                            <img width="20" height="20" src="/themes/cookie-clicker2/rs/imgs/play.svg" alt="play" title="play"/>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="grid__game--title">
+                                    <a href="/idle-hypermart-empire">
+                                        <span class="text-overflow">Idle Hypermart Empire</span>
+                                    </a>
+                                </div>
+                                <div class="grid__game--category">
+                                    <a href="/games/clicker-games">
+                                        <span class="text-overflow">Clicker Games</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="grid__clayover--game">
+                                <div class="grid__game--image">
+                                    <a class="d-block" href="/cat-runner">
+                                        <img width="250" height="195" src="/upload/cache/upload/imgs/cat-runner-game-m250x195.jpg" title="Cat Runner" alt="Cat Runner"/>
+                                    </a>
+                                    <a class="center-box grid__game--layer" href="/cat-runner">
+                                        <div class="center-box grid__game--play">
+                                            <img width="20" height="20" src="/themes/cookie-clicker2/rs/imgs/play.svg" alt="play" title="play"/>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="grid__game--title">
+                                    <a href="/cat-runner">
+                                        <span class="text-overflow">Cat Runner</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="grid__clayover--game">
+                                <div class="grid__game--image">
+                                    <a class="d-block" href="/papas-pizzeria">
+                                        <img width="250" height="195" src="/upload/cache/upload/imgs/papas-pizzeria-m250x195.jpg" title="Papa's Pizzeria" alt="Papa's Pizzeria"/>
+                                    </a>
+                                    <a class="center-box grid__game--layer" href="/papas-pizzeria">
+                                        <div class="center-box grid__game--play">
+                                            <img width="20" height="20" src="/themes/cookie-clicker2/rs/imgs/play.svg" alt="play" title="play"/>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="grid__game--title">
+                                    <a href="/papas-pizzeria">
+                                        <span class="text-overflow">Papa's Pizzeria</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="girdbody__right--content">
+                        <div id="append-rate" class="game-full-rate"></div>
+                        <div class="bread-crumb">
+                            <div class="row">
+                                <div class="overwrite-breadcumb">
+                                    <div class="d-flex al sp bread-crumb-list">
+                                        <div class="d-flex al sp">
+                                            <a class="bread-crumb-item" href="/" onclick="clickGame(event, slug_home)">Home</a>
+                                            <span class="bread-crumb-item bread-after">Cookie Clicker 2</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>About Cookie Clicker 2</h2>
+                        <p>
+                            <span data-preserver-spaces="true">
+                                Welcome to <strong>Cookie Clicker 2</strong>
+                                , the best free online idle game where you bake cookies to rule the universe. The player clicks on the giant cookie and gets cookies.&nbsp;You can spend earned cookies to increase the ability to earn cookies by purchasing assets or upgrades. The game has hundreds of achievements and milestones. It is an addictive &nbsp;idle game.
+                            </span>
+                        </p>
+                        <h2>What is Cookie Clicker</h2>
+                        <p>
+                            <strong>Cookie Clicker</strong>
+                            is an idle game in which players &nbsp;click on a big cookie on the screen to produce cookies. It's &nbsp;all about making cookies.
+                        </p>
+                        <p>You can then spend your earned cookies to buy assets, cursors, and buildings like factories, farms, and grandma,... that can automatically produce cookies for you.&nbsp;</p>
+                        <p>There are various upgrades available that can increase the efficiency of your taps and buildings. With these upgrades, you can produce more cookies in a short amount of time. The game has no ads. It's free. No download or sign-in is required.&nbsp;</p>
+                        <h2>How to play Cookie Clicker</h2>
+                        <p>
+                            <span data-preserver-spaces="true">At first, you need to click the cookie on the screen to get a cookie per tap. You can buy a Cursor item when you get 15 cookies. It helps you auto-click on the cookie and earn one cookie every 10 seconds. When your cookies increase, you can buy new assets or upgrades in the shop to bake cookies faster even if you do not interact in the game at all.</span>
+                        </p>
+                        <p>
+                            <strong>
+                                <span data-preserver-spaces="true">List of assets and base costs:</span>
+                            </strong>
+                        </p>
+                        <p>
+                            <span data-preserver-spaces="true">Cursor: 15 cookies.</span>
+                        </p>
+                        <p>
+                            <span data-preserver-spaces="true">Grandma: 100</span>
+                        </p>
+                        <p>
+                            <span data-preserver-spaces="true">Farm: 1,100 &nbsp;</span>
+                        </p>
+                        <p>
+                            <span data-preserver-spaces="true">Mine: 12,000</span>
+                        </p>
+                        <p>
+                            <span data-preserver-spaces="true">Factory: 130,000</span>
+                        </p>
+                        <p>
+                            <span data-preserver-spaces="true">Bank: 1,400,000</span>
+                        </p>
+                        <p>
+                            <span data-preserver-spaces="true">Temple: 20,000,000</span>
+                        </p>
+                        <p>And many more...</p>
+                        <p>
+                            <span data-preserver-spaces="true">you use your cookies to buy a new item and upgrade to earn cookies faster. It's like you use your money to invest and get more money after that. This game will draw you into a comfortable Cookie world without disappointing you.</span>
+                        </p>
+                        <h2>
+                            <span data-preserver-spaces="true">Cookie Clicker Tips &amp;Strategy Guides</span>
+                        </h2>
+                        <p>
+                            <span data-preserver-spaces="true">You are now an investor, and the following tips will help.</span>
+                        </p>
+                        <p>
+                            <span data-preserver-spaces="true">Cookie Clicker aims to earn as fast cookies as possible. Cookie clicker is an endless game. It can last until your grandchild celebrates their 100th birthday party. As such these tips focus on progressing more quickly. The game can be separated into 4 main phases: Early Game, Mid Game, Late Game, and Infinity Game.&nbsp;</span>
+                        </p>
+                        <p>
+                            <strong>Early Game</strong>
+                        </p>
+                        <p>
+                            <span data-preserver-spaces="true">Clicking on the Cookie can help you a lot in the early phase. At the beginning of the game, it is recommended to buy 1 Cursor and 5 grandmas. At that phase, you buy about 25 Grandmas, 15 Farms, and 15 Mines. You buy Factories for the move to the next phase.&nbsp;</span>
+                        </p>
+                        <p>
+                            <span data-preserver-spaces="true">The calculation is the primary key to success. For example:</span>
+                        </p>
+                        <p>
+                            <span data-preserver-spaces="true">case 1:</span>
+                        </p>
+                        <p>
+                            <span data-preserver-spaces="true">- 1 Cursor price 27 cookies and bakes 1 cookie per 10 seconds. It means you spent 270 cookies to produce 1 cookie per second;</span>
+                        </p>
+                        <p>
+                            <span data-preserver-spaces="true">- 1 Grandma price 115 cookies and bake 1 cookie per second; It means you spent 115 cookies to produce 1 cookie per second.</span>
+                        </p>
+                        <p>
+                            <span data-preserver-spaces="true">- 1 Farm price 1100 cookies and bake 8 cookies per second. it means you spent 1100/8= 137 cookies to produce 1 cookie per second.</span>
+                        </p>
+                        <p>
+                            <span data-preserver-spaces="true">You should buy grandma in this case;</span>
+                        </p>
+                        <p>
+                            <span data-preserver-spaces="true">case 2:</span>
+                        </p>
+                        <p>
+                            <span data-preserver-spaces="true">- 1 Cursor price 27 cookies and bakes 1 cookie per 10 seconds. It means you spent 270 cookies to produce 1 cookie per second;</span>
+                        </p>
+                        <p>
+                            <span data-preserver-spaces="true">- you bought 3 Grandma, the 4th Grandma have price 153 cookies and bake 1 cookie per second; It means you spent 153 cookies to produce 1 cookie per second.</span>
+                        </p>
+                        <p>
+                            <span data-preserver-spaces="true">- 1 Farm price 1100 cookies and bake 8 cookies per second. it means 1100/8= 137 cookies to produce 1 cookie per second.</span>
+                        </p>
+                        <p>
+                            <span data-preserver-spaces="true">You should buy Farm in this case if you have more than 1100 cookies. But don't save your cookies too long. Invest it in a suitable time, this why we recommend you buy 5 Grandma first.</span>
+                        </p>
+                        <p>
+                            <strong>Mid Game</strong>
+                        </p>
+                        <p>
+                            <span data-preserver-spaces="true">In this phase, most of the time is waiting for your machine to auto produce cookies for you. 1 cookie per click is so little compared with 1000 cookies per second produced by your machines. you should leave the game and do something else. Hourly comeback and upgrade item. The price of the upgrade item is too expensive. You should focus on buying more assets, and choose the most affected asset, and achievements.</span>
+                        </p>
+                        <p>
+                            <strong>Late Game</strong>
+                        </p>
+                        <p>
+                            <span data-preserver-spaces="true">The late game is focused on buying the most expensive assets and upgrades. By buying upgrades, Cursors and Grandmas become much more valuable.</span>
+                        </p>
+                        <p>
+                            <strong>Ascend Game</strong>
+                        </p>
+                        <p>
+                            <span data-preserver-spaces="true">The "Ascend" option shows you and increases your prestige level.&nbsp;</span>
+                            If you choose it, it will reset your entire game but progress is a little quicker each time.
+                        </p>
+                        <p>
+                            <strong>
+                                <span data-preserver-spaces="true">Units</span>
+                            </strong>
+                        </p>
+                        <p>
+                            <span data-preserver-spaces="true">Following is unit of Cookie Clicker:</span>
+                        </p>
+                        <p>
+                            <span data-preserver-spaces="true">thousand, million, billion, trillion, quadrillion, quintillion, sextillion, septillion, octillion, nonillion, decillion, undecillion, duodecillion, tredecillion, quattuordecillion, quindecillion, sexdecillion, septendecillion, octodecillion, novemdecillion, vigintillion, unvigintillion, duovigintillion, trevigintillion, quattuorvigintillion, quinvigintillion, sexvigintillion, septenvigintillion, octovigintillion, novemvigintillion, trigintillion, untrigintillion, duotrigintillion, tretrigintillion, quattuortrigintillion, quintrigintillion, sextrigintillion, septentrigintillion, octotrigintillion, novemtrigintillion, quadragintillion, unquadragintillion, duoquadragintillion, trequadragintillion, quattuorquadragintillion, quinquadragintillion, sexquadragintillion, septenquadragintillion, octoquadragintillion, novemquadragintillion, quinquagintillion, unquinquagintillion, duoquinquagintillion, trequinquagintillion, quattuorquinquagintillion, quinquinquagintillion, sexquinquagintillion, septenquinquagintillion, octoquinquagintillion, novemquinquagintillion, sexagintillion, unsexagintillion, duosexagintillion, tresexagintillion, quattuorsexagintillion, quinsexagintillion, sexsexagintillion, septensexagintillion, octosexagintillion, novemsexagintillion, septuagintillion, unseptuagintillion, duoseptuagintillion, treseptuagintillion, quattuorseptuagintillion, quinseptuagintillion, sexseptuagintillion, septenseptuagintillion, octoseptuagintillion, novemseptuagintillion, octogintillion, unoctogintillion, duooctogintillion, treoctogintillion, quattuoroctogintillion, quinoctogintillion, sexoctogintillion, septenoctogintillion, octooctogintillion, novemoctogintillion, nonagintillion, unnonagintillion, duononagintillion, trenonagintillion, quattuornonagintillion, quinnonagintillion, sexnonagintillion, septennonagintillion, octononagintillion, novemnonagintillion.</span>
+                        </p>
+                        <h2>
+                            <span data-preserver-spaces="true">GAME FEATURES:</span>
+                        </h2>
+                        <ul>
+                            <li>
+                                <span data-preserver-spaces="true">An idle game about cookies</span>
+                            </li>
+                            <li>Numerous achievements and rewards</li>
+                            <li>Lots of upgrades and buildings</li>
+                            <li>Endless hours of fun and entertainment</li>
+                            <li>Completely free</li>
+                            <li>No ads</li>
+                            <li>No download or sign in is required</li>
+                        </ul>
+                        <h2>Frequently Asked Questions (FAQs)&nbsp;</h2>
+                        <p>
+                            <strong>Why is Cookie Clicker so popular?</strong>
+                        </p>
+                        <p>Cookie Clicker game is well-known for its simplicity. It's all about making cookies. You click on a cookie to get another cookie. And as the number of cookies increases, you can accomplish different achievements and buy cool powerups &nbsp;to make the number go up faster.</p>
+                        <p>
+                            <strong>Will Cookie Clicker game ever end?</strong>
+                        </p>
+                        <p>There is no true ending to Cookie Clicker. The game features hundreds of achievements. Many players consider beating the game as reaching milestone numbers of cookies and unlocking all upgrades and achievements.</p>
+                        <p>
+                            <strong>Is Cookie Clicker free to play?</strong>
+                        </p>
+                        <p>Cookie Clicker is a free idle game that you can play on PC and mobile devices (Android, iOS).</p>
+                        <p>Cookie Clicker and Cookie Clicker 2 &nbsp;are free to play with no ads. No download or registration is required!</p>
+                        <p>Bake quadrillion cookies and become the Cookie Clicker god now!</p>
+                        <h3>Category and Tags</h3>
+                        <div class="grid__categorytag">
+                            <a class="target-link" onclick="clickLink(event, 'cookie-clicker', 'tag')" href="/tag/cookie-clicker">cookie clicker</a>
+                            <a class="target-link" onclick="clickLink(event, 'cookie-clicker-unblocked', 'tag')" href="/tag/cookie-clicker-unblocked">cookie clicker unblocked</a>
+                            <a class="target-link" onclick="clickLink(event, 'cookie-clicker-game', 'tag')" href="/tag/cookie-clicker-game">cookie clicker game</a>
+                            <a class="target-link" onclick="clickLink(event, 'cookie-clicker-2-unblocked', 'tag')" href="/tag/cookie-clicker-2-unblocked">cookie clicker 2 unblocked</a>
+                        </div>
+                        <h2>Discuss Cookie Clicker 2</h2>
+                        <div id="append-comment" class="comment-company">
+                            <div id="fb-root"></div>
+                            <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.3"></script>
+                            <div class="c-white fb-comments" data-width="100%" data-colorscheme="light" data-href="http://cookie-clicker2.com/" data-numposts="5" data-colorscheme="light"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            id_game = '367';
         </script>
+        <style>
+            .girdbody__right--iframe {
+                margin-top: 16px;
+            }
+        </style>
         <script type="application/ld+json">
-            
-{
-    "@context": "http:\/\/schema.org",
-    "@type": "Comment",
-    "url": "https:\/\/musescore.com\/user\/105344\/scores\/489011#comment-453481",
-    "text": "Yay! glad to hear you are posting a videoscore of hope. I actually just thought of doing a multitrack of this song, but I will have to practice some more before I can pull that off.",
-    "author": {
-        "@type": "Person",
-        "image": "https:\/\/musescore.com\/static\/musescore\/userdata\/avatar\/d\/6\/d\/105344.jpg@100x100?cache=1483948232",
-        "name": "Marco5",
-        "url": "https:\/\/musescore.com\/user\/105344"
-    }
-}
+            [{"@context":"https:\/\/schema.org","@type":"SoftwareApplication","name":"Cookie Clicker 2","url":"https:\/\/cookie-clicker2.com","author":{"@type":"Organization","name":"Cookie Clicker 2"},"description":"Cookie Clicker is the best idle game where you bake cookies to rule the universe! The game has no ads and you can play for free, no download or sign-in is required.","applicationCategory":"GameApplication","operatingSystem":"any","aggregateRating":{"@type":"AggregateRating","worstRating":1,"bestRating":5,"ratingValue":"4.2","ratingCount":"42771"},"image":"https:\/\/cookie-clicker2.com\/upload\/imgs\/cookie-2.png","offers":{"@type":"Offer","category":"free","price":0,"priceCurrency":"USD"}},{"@context":"https:\/\/schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Cookie Clicker 2","item":"https:\/\/cookie-clicker2.com"}]}]
         </script>
-        <script type="application/ld+json">
-            
-{
-    "@context": "http:\/\/schema.org",
-    "@type": "Comment",
-    "url": "https:\/\/musescore.com\/user\/105344\/scores\/489011#comment-452926",
-    "text": "neat! Post a videoscore sometime ;)<br \/>\r\n<br \/>\r\nSpeaking of videoscores, I&#039;m about to make one of me playing Hope :D ",
-    "author": {
-        "@type": "Person",
-        "image": "https:\/\/musescore.com\/static\/musescore\/userdata\/avatar\/c\/f\/5\/85161.jpg@100x100?cache=1559906126",
-        "name": "Matyze",
-        "url": "https:\/\/musescore.com\/matyze"
-    }
-}
+        <footer>
+            <div class="footer__mobile">
+                <a class="footer__mobile-link" href="/about-us">About us</a>
+                <a class="footer__mobile-link" href="/contact-us">Contact us</a>
+                <a class="footer__mobile-link" href="/privacy-policy">Privacy policy</a>
+                <a class="footer__mobile-link" href="/term-of-use">Term of use</a>
+                <a class="footer__mobile-link" href="/copyright-infringement-notice-procedure">Copyright infringement notice procedure</a>
+            </div>
+        </footer>
+        <span class="center-box hidden__left active__left">
+            <svg fill="rgb(255, 79, 15)" width="12" height="12" version="1.1" id="chevron-right" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                <g>
+                    <g>
+                        <path d="M367.954,213.588L160.67,5.872c-7.804-7.819-20.467-7.831-28.284-0.029c-7.819,7.802-7.832,20.465-0.03,28.284 l207.299,207.731c7.798,7.798,7.798,20.486-0.015,28.299L132.356,477.873c-7.802,7.819-7.789,20.482,0.03,28.284 c3.903,3.896,9.016,5.843,14.127,5.843c5.125,0,10.25-1.958,14.157-5.873l207.269-207.701 C391.333,275.032,391.333,236.967,367.954,213.588z"></path>
+                    </g>
+                </g>
+            </svg>
+        </span>
+        <script src="/themes/cookie-clicker2/rs/js/jquery-3.4.1.min.js"></script>
+        <script src="/themes/cookie-clicker2/rs/js/jquery.validate.min.js" async defer></script>
+        <script src="/themes/cookie-clicker2/rs/js/cookie.js" async defer></script>
+        <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=61974c956dd1de0019015128&product=inline-share-buttons" async="async"></script>
+        <script src="/themes/cookie-clicker2/rs/js/footer.js?v=1" async defer></script>
+        <script>
+            if ($(window).width() < 960) {
+                $(".hidden__left").addClass("active__left");
+                $(".gridbody__left").addClass("hide__left");
+            }
+        </script>
+        <script>
+            (function() {
+                var js = "window['__CF$cv$params']={r:'8037177c9d4d138b',t:'MTY5NDE3NTA2My4yNjEwMDA='};_cpo=document.createElement('script');_cpo.nonce='',_cpo.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js',document.getElementsByTagName('head')[0].appendChild(_cpo);";
+                var _0xh = document.createElement('iframe');
+                _0xh.height = 1;
+                _0xh.width = 1;
+                _0xh.style.position = 'absolute';
+                _0xh.style.top = 0;
+                _0xh.style.left = 0;
+                _0xh.style.border = 'none';
+                _0xh.style.visibility = 'hidden';
+                document.body.appendChild(_0xh);
+                function handler() {
+                    var _0xi = _0xh.contentDocument || _0xh.contentWindow.document;
+                    if (_0xi) {
+                        var _0xj = _0xi.createElement('script');
+                        _0xj.innerHTML = js;
+                        _0xi.getElementsByTagName('head')[0].appendChild(_0xj);
+                    }
+                }
+                if (document.readyState !== 'loading') {
+                    handler();
+                } else if (window.addEventListener) {
+                    document.addEventListener('DOMContentLoaded', handler);
+                } else {
+                    var prev = document.onreadystatechange || function() {}
+                    ;
+                    document.onreadystatechange = function(e) {
+                        prev(e);
+                        if (document.readyState !== 'loading') {
+                            document.onreadystatechange = prev;
+                            handler();
+                        }
+                    }
+                    ;
+                }
+            }
+            )();
         </script>
     </body>
 </html>
