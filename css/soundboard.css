@@ -30,6 +30,7 @@ html {
     border: 1px solid; 
     height:100px;
     width:400px;
+    font-size: 30px;
   }
     .btn:hover {
       background-color: #34495e;
