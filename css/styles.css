@@ -4999,6 +4999,12 @@ textarea.form-control-lg {
   color: #4f5050;
 }
 
+#vers {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
 .alert-dark {
   color: #141619;
   background-color: #d3d3d4;
