@@ -1,0 +1,86 @@
+body {
+    background-color: seagreen;
+    font-weight: bold;
+    font-family: Arial;
+    color: yellow;
+    width: 700px;
+}
+
+.top {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: lightgreen;
+}
+
+li.top {
+    float: left;
+}
+
+li.top a {
+    display: block;
+    color: blue;
+    font-weight: bold;
+    font-family: Trebuchet MS;
+    text-align: center;
+    padding: 14px 50px;
+    text-decoration: none;
+    
+}
+
+/* Change the link color to #111 (black) on hover */
+li.top a:hover {
+    background-color: #111;
+}
+
+
+
+.portrait {
+    width: 300px;
+    margin-top: 20px;
+    margin-left: 24px;
+    margin-right: 24px;
+}
+
+#scams {
+    width: 600px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#pals {
+    width: 600px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.me {
+    width: 200px;
+    margin-left: 12.5px;
+    margin-right: 12.5px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 30px;
+    color: blue;
+    background-color: pink;
+}
+
+h2 {
+    text-align: center;
+    font-size: 40px;
+    color: lightblue;
+    font-family: Verdana;
+}
+
+p {
+    text-align: center;
+}
+
+#rip {
+    font-size: 12px;
+}
