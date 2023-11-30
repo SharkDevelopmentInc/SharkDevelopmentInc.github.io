@@ -1,5 +1,5 @@
 <?php
-$directory = './'; // Update the path to match your desired directory
+$directory = './trancript/'; // Update the path to match your desired directory
 
 // Get all files and directories in the specified directory
 $contents = scandir($directory);
