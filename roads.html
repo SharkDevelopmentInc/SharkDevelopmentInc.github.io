@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Fullscreen Video</title>
+    <title>Fullscreen Video with Audio</title>
     <style>
         body,
         html {
@@ -19,26 +19,39 @@
             height: 100%;
             object-fit: cover;
         }
+
+        audio {
+            display: none; /* Hide the audio controls if you don't want them visible */
+        }
     </style>
 </head>
 
 <body>
-    <video autoplay>
+    <video autoplay muted>
         <source src="roads.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 
-    <!-- Optional: Add controls for the user to play/pause the video -->
+    <audio controls autoplay>
+        <source src="roads.mp3" type="audio/mp3">
+        Your browser does not support the audio tag.
+    </audio>
+
+    <!-- Optional: Add controls for the user to play/pause the video and audio -->
     <!-- <button onclick="togglePlayPause()">Play/Pause</button> -->
 
     <script>
         // Optional JavaScript function to toggle play/pause
         function togglePlayPause() {
             var video = document.querySelector('video');
+            var audio = document.querySelector('audio');
+
             if (video.paused) {
                 video.play();
+                audio.play();
             } else {
                 video.pause();
+                audio.pause();
             }
         }
     </script>
