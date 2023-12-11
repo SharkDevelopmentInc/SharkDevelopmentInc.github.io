@@ -32,10 +32,9 @@
         Your browser does not support the video tag.
     </video>
 
-    <audio controls autoplay>
-        <source src="roads.mp3" type="audio/mp3">
-        Your browser does not support the audio tag.
-    </audio>
+    <audio src="/roads.mp3" autoplay>
+        <p>If you are reading this, it is because your browser does not support the audio element.</p>
+        </audio>
 
     <!-- Optional: Add controls for the user to play/pause the video and audio -->
     <!-- <button onclick="togglePlayPause()">Play/Pause</button> -->
@@ -44,14 +43,14 @@
         // Optional JavaScript function to toggle play/pause
         function togglePlayPause() {
             var video = document.querySelector('video');
-            var audio = document.querySelector('audio');
+           
 
             if (video.paused) {
                 video.play();
-                audio.play();
+              
             } else {
                 video.pause();
-                audio.pause();
+             
             }
         }
     </script>
