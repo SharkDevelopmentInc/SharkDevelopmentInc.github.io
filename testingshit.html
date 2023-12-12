@@ -1,57 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RSS Feed Widget</title>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="AP U.S. Government and Politics Study Guide" />
+    <meta name="author" content="Your Name" />
+    <title>AP U.S. Government and Politics Study Guide</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="../css/styles.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link href="transitions.css" rel="stylesheet" />
+    <style>
+        /* Custom styles for the study guide */
+        /* Add your own custom styles here */
+
+       
+    /* Add margin to list items for spacing */
+    #unit-1 ul {
+        margin-left: 40px; /* Adjust the value as needed */
+    }
+</style>
+
+    </style>
 </head>
+
 <body>
 
-<div id="rss-widget"></div>
+    <div class="transition transition-1 is-active"></div>
+    <!-- Responsive navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container px-5">
+            <a class="navbar-brand" href="your-homepage-link">AP Gov Study Guide</a>
+            <!-- Adjust the navigation links based on your content -->
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link" href="#unit-1">Unit 1</a></li>
+                <li class="nav-item"><a class="nav-link" href="#unit-2">Unit 2</a></li>
+                <li class="nav-item"><a class="nav-link" href="#unit-3">Unit 3</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<script>
-    // Replace this URL with the URL of your RSS feed
-    var rssFeedUrl = 'https://sharkmediadepartment.weebly.com/2/feed';
+    <div class="container px-4 px-lg-5">
 
-    // Function to fetch and display the RSS feed
-    function fetchAndDisplayRSS() {
-        $.ajax({
-            url: 'https://api.rss2json.com/v1/api.json',
-            method: 'GET',
-            dataType: 'json',
-            data: {
-                rss_url: rssFeedUrl
-            },
-            success: function (response) {
-                if (response.status === 'ok') {
-                    displayRSS(response.items);
-                } else {
-                    console.error('Error fetching RSS feed');
-                }
-            },
-            error: function () {
-                console.error('Error fetching RSS feed');
-            }
-        });
-    }
+        <!-- Heading Row -->
+        <div class="row gx-4 gx-lg-5 align-items-center my-5 heading-row">
+            <div class="col-lg-12">
+                <img class="img-fluid rounded" src="your-image-url" alt="AP Gov Study Guide Logo" />
+            </div>
+        </div>
 
-    // Function to display the RSS feed items in HTML
-    function displayRSS(items) {
-        var html = '<ul>';
-        for (var i = 0; i < items.length; i++) {
-            var item = items[i];
-            html += '<li><a href="' + item.link + '" target="_blank">' + item.title + '</a></li>';
-        }
-        html += '</ul>';
-        $('#rss-widget').html(html);
-    }
+        <!-- Content Row -->
+        <div class="row gx-4 gx-lg-5">
+           <!-- Unit 1 Section -->
+<!-- Unit 1 Section -->
+<div id="unit-1" class="col-md-12 mb-5">
+    <div class="card h-100">
+        <div class="card-body">
+            <h2 class="card-title">Unit 1: Constitutional Underpinnings of the U.S. Government</h2>
 
-    // Fetch and display the RSS feed on page load
-    $(document).ready(function () {
-        fetchAndDisplayRSS();
-    });
-</script>
+            <!-- 1.1 Introduction to U.S. Government and Politics -->
+            <h3>1.1 Introduction to U.S. Government and Politics</h3>
+            <ul>
+                <li>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Government Structure:</strong>
+                    <ul>
+                        <li>Levels of Government: Understand the distinction between federal, state, and local governments and their respective powers.</li>
+                        <li>Branches of Government: Explore the functions of the legislative, executive, and judicial branches.</li>
+                    </ul>
+                </li>
+                <li>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Political Theories:</strong>
+                    <ul>
+                        <li>Social Contract Theory: Examine the idea that individuals consent to government authority for mutual benefit and protection of rights.</li>
+                        <li>Natural Rights: Understand the concept that individuals possess inherent rights, such as life, liberty, and property.</li>
+                    </ul>
+                </li>
+            </ul>
 
+            <!-- 1.2 Theories of Democracy -->
+            <h3>1.2 Theories of Democracy</h3>
+            <ul>
+                <li>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Comparative Analysis:</strong>
+                    <ul>
+                        <li><strong>Pluralism:</strong>
+                            <ul>
+                                <li>Interest Group Influence: Explore real-world examples of interest groups shaping public policy.</li>
+                                <li>Critiques and Limitations: Analyze criticisms of pluralism, including concerns about unequal influence.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Elite Theory:</strong>
+                            <ul>
+                                <li>Power Concentration: Investigate instances where a small elite might influence policy decisions.</li>
+                                <li>Influence on Policies: Examine historical and contemporary cases reflecting elite influence.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Hyperpluralism:</strong>
+                            <ul>
+                                <li>Policy Gridlock: Explore situations where competing interests hinder effective governance.</li>
+                                <li>Government Response: Analyze government responses to hyperpluralistic challenges.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <!-- 1.3 The U.S. Constitution -->
+            <h3>1.3 The U.S. Constitution</h3>
+            <ul>
+                <li>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Founding Documents and Principles:</strong>
+                    <ul>
+                        <li><strong>Articles of Confederation:</strong>
+                            <ul>
+                                <li>Weaknesses: Identify the limitations of the Articles, leading to the Constitutional Convention.</li>
+                                <li>Constitutional Fixes: Understand how the U.S. Constitution addressed the shortcomings of the Articles.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Principles of the Constitution:</strong>
+                            <ul>
+                                <li>Popular Sovereignty: Analyze instances where the people exert their will in the political process.</li>
+                                <li>Federalism in Action: Examine specific examples of federal-state cooperation or tension.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Amendments and Ratification:</strong>
+                            <ul>
+                                <li>Ratification Process: Explore debates and compromises leading to the Constitution's ratification.</li>
+                                <li>Bill of Rights Significance: Understand the impact of the Bill of Rights on individual freedoms.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <!-- 1.4 Federalist vs. Anti-Federalist Debates -->
+            <h3>1.4 Federalist vs. Anti-Federalist Debates</h3>
+            <ul>
+                <li>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Historical Context and Arguments:</strong>
+                    <ul>
+                        <li><strong>Federalist Papers:</strong>
+                            <ul>
+                                <li>Authors and Intent: Understand the motivations behind key Federalist Papers (e.g., Federalist No. 10, 51).</li>
+                                <li>Relevance Today: Discuss the enduring relevance of Federalist arguments in contemporary politics.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Anti-Federalist Concerns:</strong>
+                            <ul>
+                                <li>State Sovereignty: Explore concerns about state sovereignty and potential abuses of federal power.</li>
+                                <li>Demands for a Bill of Rights: Understand the Anti-Federalist push for a Bill of Rights to protect individual liberties.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <!-- 1.5 Amendments to the Constitution -->
+            <h3>1.5 Amendments to the Constitution</h3>
+            <ul>
+                <li>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Historical Evolution and Impact:</strong>
+                    <ul>
+                        <li><strong>Bill of Rights:</strong>
+                            <ul>
+                                <li>Individual Freedoms: Examine each amendment's protection of individual rights (e.g., First Amendment freedoms).</li>
+                                <li>Incorporation Doctrine: Understand how the Bill of Rights applies to state governments (incorporation).</li>
+                            </ul>
+                        </li>
+                        <li><strong>Civil Rights Amendments:</strong>
+                            <ul>
+                                <li>13th, 14th, and 15th Amendments: Analyze their role in addressing issues of slavery, equal protection, and voting rights.</li>
+                                <li>Impact on Civil Rights Movement: Explore the constitutional basis for landmark civil rights decisions.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Subsequent Amendments:</strong>
+                            <ul>
+                                <li>Expansion of Suffrage: Discuss amendments (e.g., 19th, 26th) extending voting rights.</li>
+                                <li>Constitutional Evolution: Examine how amendments reflect societal changes over time.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <!-- Additional Resources and Practice -->
+            <h3>Additional Resources and Practice</h3>
+            <ul>
+                <li>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Landmark Supreme Court Cases:</strong>
+                    <ul>
+                        <li>Marbury v. Madison (1803), Brown v. Board of Education (1954), Roe v. Wade (1973).</li>
+                    </ul>
+                </li>
+                <li>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Constitutional Debates:</strong>
+                    <ul>
+                        <li>Classroom simulations or debates on key constitutional issues.</li>
+                    </ul>
+                </li>
+                <li>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Interactive Constitutional Tools:</strong>
+                    <ul>
+                        <li>Explore online platforms offering interactive resources for understanding constitutional concepts.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <!-- Summary -->
+            <h3>Summary</h3>
+            <p>Unit 1 provides a comprehensive understanding of the foundational principles and documents that shape the U.S. government. By exploring historical contexts, debates, and constitutional amendments, students gain insight into the complex interplay of political theories and structures that define American governance. Emphasize critical analysis of real-world applications and contemporary relevance for a thorough grasp of Unit 1 concepts.</p>
+        </div>
+    </div>
+</div>
+
+
+
+            <!-- Unit 2 Section -->
+            <div id="unit-2" class="col-md-12 mb-5">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title">Unit 2: Political Beliefs and Behaviors</h2>
+                        <p>Political Culture and Socialization</p>
+                        <p>Public Opinion and Polling</p>
+                        <p>Political Participation: voting, protests, advocacy</p>
+                        <p>Voting Behavior: demographics, parties, candidates</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Unit 3 Section -->
+            <div id="unit-3" class="col-md-12 mb-5">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title">Unit 3: Political Parties, Interest Groups, and Mass Media</h2>
+                        <p>Political Parties: functions, two-party system, third parties</p>
+                        <p>Party Systems: realignment, dealignment</p>
+                        <p>Interest Groups: functions, types, influence techniques</p>
+                        <p>Mass Media: role, types, impact on public opinion</p>
+                        <!-- Add more content as needed -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="py-5 bg-dark">
+            <div class="container px-4 px-lg-5">
+                <p class="m-0 text-center text-white">&copy; 2023 Your Study Guide.</p>
+            </div>
+        </footer>
+
+        <!-- Bootstrap core JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS -->
+        <script src="js/scripts.js"></script>
+    </div>
+
+    <!-- Add this script at the end of your HTML, just before the </body> tag -->
+    <script src="transitions.js"></script>
 </body>
+
 </html>
