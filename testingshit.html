@@ -1,48 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JavaScript Wizard</title>
-  <link rel="stylesheet" href="transitions.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Contact Shark Development Incorporated for inquiries and support." />
+    <meta name="author" content="©2023 Shark Development Incorporated" />
+    <title>Contact Shark Development</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="https://sharkdevelopmentinc.github.io/css/styles.css" rel="stylesheet" />
+
+    <!-- Add these links in the head section of your HTML -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <style>
+        /* Your custom styles here */
+
+        /* Navbar styling */
+        .navbar {
+            background-color: #343a40 !important;
+        }
+
+        /* Navbar link styling */
+        .navbar-nav .nav-link {
+            color: white !important;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #04AA6D !important;
+        }
+
+        /* Contact form styling */
+        .contact-form {
+            margin-top: 50px;
+        }
+    </style>
 </head>
+
 <body>
-  <div class="transition transition-3 is-active"></div>
-  <div class="page">
-    <header>
-      <nav>
-    
-        <img src="logo.png" alt="JavaScript Wizard" class="logo" />
-    
-        <ul class="menu">
-          <li class="menu-item is-active"><a href="#">Home</a></li>
-          <li class="menu-item"><a href="/about.html">About</a></li>
-          <li class="menu-item"><a href="/services.html">Services</a></li>
-          <li class="menu-item"><a href="#">Contact</a></li>
-        </ul>
-    
-      </nav>
-    </header>
-
-    <main>
-      <section class="banner">
-        <div class="banner-inner">
-          <h1>JavaScript Wizard</h1>
-          <h3>Welcome to the Wizarding School of JavaScript</h3>
+    <!-- Responsive navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container px-5">
+            <a class="navbar-brand" href="#!">Shark Development</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="https://sharkdevelopmentinc.github.io/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about/">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/browser/">Browser</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="/contact/">Contact</a></li>
+                </ul>
+            </div>
         </div>
-      </section>
+    </nav>
 
-      <section class="page-content">
-        <div class="content-inner">
-          <h2>Home Page</h2>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam, iste. Unde inventore ullam velit impedit atque consequatur a repudiandae molestiae nihil voluptas accusamus accusantium quibusdam error deleniti similique, nisi provident molestias harum sint nemo blanditiis illum modi. Impedit optio non placeat eligendi? Inventore non, vel perferendis voluptatum et natus eum!</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis repellat quibusdam unde magni, illo minus eveniet dolore facere vel maiores porro quisquam ipsa iusto iure dolorem soluta doloremque quam itaque voluptatem necessitatibus delectus temporibus placeat!</p>
+    <!-- Page Content -->
+    <div class="container px-4 px-lg-5">
+
+        <!-- Heading Row -->
+        <div class="row gx-4 gx-lg-5 align-items-center my-5">
+            <div class="col-lg-12">
+                <h1 class="font-weight-light">Contact Shark Development</h1>
+            </div>
         </div>
-      </section>
-    </main>
-  </div>
 
-  <script src="transitions.js"></script>
+        <!-- Contact Form -->
+        <div class="row gx-4 gx-lg-5 contact-form">
+            <div class="col-lg-6">
+                <p>Feel free to reach out to us via Discord or Email. We're here to assist you!</p>
+                <p><strong>Discord:</strong> <a href="https://discord.gg/YOUR_DISCORD_INVITE_LINK" target="_blank">Join our Discord Server</a></p>
+                <p><strong>Email:</strong> <a href="mailto:shark.inc.dev@gmail.com">shark.inc.dev@gmail.com</a></p>
+            </div>
+        </div>
+    </div>
 
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+        <div class="container px-4 px-lg-5">
+            <p class="m-0 text-center text-white">&copy; 2023 Shark Development Incorporated.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap core JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS -->
+    <script src="js/scripts.js"></script>
 </body>
+
 </html>
