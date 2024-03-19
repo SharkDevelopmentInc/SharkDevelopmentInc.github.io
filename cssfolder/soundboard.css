@@ -4,7 +4,7 @@ html {
     min-height: 100%; }
   
   body {
-    background-color: #2c3e50;
+    background-color: #ffb088;
     margin-bottom: 60px;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; }
   
@@ -13,29 +13,31 @@ html {
     bottom: 0;
     height: 60px;
     width: 100%;
-    background-color: #34495e;
+    background-color: #ffb088;
     border-top: 1px solid;
-    border-color: #d35400; }
+    border-color: #fff; 
+    color: #88d7ff
+  }
   
   h1 {
-    color: #d35400;
+    color: #fffaaf;
     border-color: #d35400;
     font-size: 4em;
     margin-bottom: 1em; }
   
   .btn {
-    background-color: #2c3e50;
-    color: #d35400;
-    border-color: #d35400;
+    background-color: #88d7ff;
+    color: #2c3e50;
+    border-color: #2c3e50;
     border: 1px solid; 
     height:100px;
     width:400px;
     font-size: 30px;
   }
     .btn:hover {
-      background-color: #34495e;
-      border-color: #d35400;
-      color: #d35400; }
+      background-color: #88d7ffaa;
+      border-color: #2c3e50;
+      color: #2c3e50; }
   
   .col-xs-6 {
     margin-bottom: 1em; }
