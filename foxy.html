@@ -1,4 +1,4 @@
-<title>Freddy</title>
+<title>Bonnie</title>
 <link href="./cssfolder/soundboard.css" rel="stylesheet" />
 <div class="container">
 
@@ -22,15 +22,14 @@
 <script>
     let timeout = false 
     async function move(){
+        if(timeout) return alert('Currently in COOLDOWN!')
+
     const shuffledEntries = [
-        'Basement ~ Stage',
+        'Basement ~ Fox Area',
         'Basement ~ Stair Bottom',
         'Stairs',
-        'Dining Room',
-        'Kitchen',
-        'Right Hallway (Outside Madi\'s Room)',
-        'Right Door (Inside Madi\'s Room)',
-        'Living Room'
+        'Kitchen Hallway',
+        'SPRINT TO Left Door (Inside Jax\'s Room), IF OPEN, KILL. IF CLOSED, BANG AND RETURN TO FOX AREA',
     ];
     for (let i = shuffledEntries.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -38,6 +37,7 @@
     }
     const randomEntry = shuffledEntries[Math.floor(Math.random() * shuffledEntries.length)];
     alert(randomEntry);
+
     timeout = true
 
     setTimeout(() => {
