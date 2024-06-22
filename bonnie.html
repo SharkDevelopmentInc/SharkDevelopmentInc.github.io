@@ -22,6 +22,7 @@
 <script>
     let timeout = false 
     async function move(){
+        if(timeout) return alert('Currently in COOLDOWN!')
     const shuffledEntries = [
         'Basement ~ Stage',
         'Basement ~ Stair Bottom',
