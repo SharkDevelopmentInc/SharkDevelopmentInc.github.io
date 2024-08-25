@@ -42,8 +42,11 @@ def search_youtube_video(query, name, max_results=1):
         print(f"An error occurred: {e}")
         return None
 
-if __name__ == "__main__":
-    import sys
-    if len(sys.argv) > 1:
-        result = download(sys.argv[1], sys.argv[2])
-        print(f'Downloaded {sys.argv[1]} for {sys.argv[2]}')
+
+download('I wont back down - Tom Petty', 'addymae')
+download('Row your boat - DJ Beatty', 'charlie')
+download('Ready For it - Taylor Swift', 'emmy')
+download('Turn down for what', "emily")
+download('Blind - Korn', 'emma')
+download('Titanium (Dark Horse) - Katy Perry', 'evelyn')
+download('Crazy Train', "molly")
