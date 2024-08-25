@@ -2,10 +2,11 @@ import yt_dlp as youtube_dl
 from youtubesearchpython import VideosSearch
 import os
 
-def download(term):
+def download(term, name):
 
+    url = search_youtube_video(term, name)
 
-    output_path = './audios'
+    output_path = './temp/soundboard'
     ydl_opts = {
         'format': 'bestaudio/best',
         'extractaudio': True,
@@ -14,7 +15,7 @@ def download(term):
             'preferredcodec': 'mp3',
             'preferredquality': '192',
         }],
-        'outtmpl': f'{output_path}/%(id)s.%(ext)s',  # Template for the filename
+        'outtmpl': f'{output_path}/{name}.%(ext)s',  # Template for the filename
         'noplaylist': True,  # Download only single video,
         'quiet': True
     }
