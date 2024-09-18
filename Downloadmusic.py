@@ -43,10 +43,5 @@ def search_youtube_video(query, name, max_results=1):
         return None
 
 
-download('I wont back down - Tom Petty', 'addymae')
-download('Row your boat - DJ Beatty', 'charlie')
-download('Ready For it - Taylor Swift', 'emmy')
-download('Turn down for what', "emily")
-download('Blind - Korn', 'emma')
-download('Titanium (Dark Horse) - Katy Perry', 'evelyn')
-download('Crazy Train', "molly")
+download('Double Life - Pharell Williams', 'ava')
+
