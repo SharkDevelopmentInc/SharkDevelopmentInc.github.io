@@ -43,5 +43,5 @@ def search_youtube_video(query, name, max_results=1):
         return None
 
 
-download('Double Life - Pharell Williams', 'ava')
+download('anakins betrayal', 'Anakins Betrayal')
 
