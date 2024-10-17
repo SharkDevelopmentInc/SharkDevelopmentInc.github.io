@@ -1,0 +1,109 @@
+<script>
+    const ELS_pinEntry = document.querySelectorAll(".pinEntry");
+    const selectAllIfFull = (evt) => {
+        const EL_input = evt.currentTarget;
+        if (EL_input.value.length >= 4) EL_input.select();
+    };
+    ELS_pinEntry.forEach(el => {
+        el.addEventListener("focusin", selectAllIfFull);
+    });
+</script>
+
+<style>
+
+body {
+    background-color: #88d7ff;
+}
+
+.pinBox {
+  --width: 296px;
+  --height: 74px;
+  --spacing: 47px;
+  
+  display: inline-block;
+  position: relative;
+  width: var(--width);
+  height: var(--height);
+  background-image: url(https://i.sstatic.net/JbkZl.png); 
+}
+
+.pinEntry {
+  position: absolute;
+  padding-left: 21px;
+  font-family: courier, monospaced;
+  font-size: var(--spacing);
+  height: var(--height);
+  letter-spacing: var(--spacing);
+  background-color: transparent;
+  border: 0;
+  outline: none;
+  clip: rect(0px, calc(var(--width) - 21px), var(--height), 0px);
+}
+.search-btn {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.search-btn:hover {
+  padding: 10px;
+  background-color: #39853c;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+</style>
+
+<div class="pinBox">
+    <input class="pinEntry" id="pinEntry" name="token" type=text maxlength=4 autocomplete=off >
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <center>
+       <button id="search-btn" class="cursor search-btn">Try Code</button>
+    </center>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+  <script>
+    const pinEntry = document.getElementById('pinEntry')
+    const searchButton = document.getElementById('search-btn')
+
+    searchButton.addEventListener('click', pinCheck)
+
+    function pinCheck(){
+        const pin = pinEntry.value
+        pinEntry.value = ''
+
+        if(pin === '7652'){
+            Swal.fire({
+                title: 'Correct Pin!',
+                text: 'You have inputted the correct pin, move on to the next room!',
+                icon: 'success',
+                confirmButtonColor: "#88d7ff",
+                confirmButtonText: 'Ok'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                window.location.href = window.location
+                }
+            });    
+        }else{
+            Swal.fire({
+                title: 'Incorrect Pin!',
+                text: 'You have not inputted the correct pin, try again!',
+                icon: 'error',
+                confirmButtonColor: "#88d7ff",
+                confirmButtonText: 'Close'
+            });    
+        }
+    }
+  </script>
