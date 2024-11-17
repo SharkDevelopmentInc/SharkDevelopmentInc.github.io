@@ -43,5 +43,6 @@ def search_youtube_video(query, name, max_results=1):
         return None
 
 
-download('anakins betrayal', 'Anakins Betrayal')
-
+download('Holding out for a hero', 'hero')
+download('Duel of the Fates', 'duel')
+download('Kung Fu Fighting', 'kungfu')
