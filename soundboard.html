@@ -115,45 +115,45 @@
 </footer>
 
 <script>
-let audioContext;
-let gainNodes = new Map(); // Store gain nodes for each audio element
+let audioContext = new (window.AudioContext || window.webkitAudioContext)();
+let gainNodes = new Map();
 
 function fadeOut() {
     document.querySelectorAll('audio').forEach(audio => {
         if (!audio.paused) {
-            // Create or reuse a global AudioContext
-            if (!audioContext || audioContext.state === "closed") {
-                audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            }
-            
-            let gainNode = gainNodes.get(audio);
-
-            if (!gainNode) {
-                const source = audioContext.createMediaElementSource(audio);
-                gainNode = audioContext.createGain();
-                source.connect(gainNode);
-                gainNode.connect(audioContext.destination);
-                gainNodes.set(audio, gainNode);
-            }
-
-            // Ensure the AudioContext is running
+            // Ensure the AudioContext is running (needed for iOS)
             if (audioContext.state === "suspended") {
                 audioContext.resume();
             }
 
-            // Smooth fade-out over 1 second
+            // Create a GainNode if it doesn't exist for this audio element
+            if (!gainNodes.has(audio)) {
+                const gainNode = audioContext.createGain();
+                const track = audioContext.createMediaElementSource(audio);
+                track.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                gainNodes.set(audio, { gainNode, track });
+            }
+
+            const { gainNode, track } = gainNodes.get(audio);
+
+            // Apply a smooth fade-out effect
             gainNode.gain.setValueAtTime(1, audioContext.currentTime);
-            gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + 1);
+            gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + 1); // 1-second fade-out
 
             setTimeout(() => {
                 audio.pause();
-                audio.currentTime = 0; // Reset playback
-                gainNode.disconnect(); // Prevent conflicts on replay
-                gainNodes.delete(audio); // Clean up
+                audio.currentTime = 0; // Reset playback position
+                
+                // Disconnect track to allow replay
+                track.disconnect();
+                gainNode.disconnect();
+                gainNodes.delete(audio);
             }, 1000);
         }
     });
 }
+
 
 
 
