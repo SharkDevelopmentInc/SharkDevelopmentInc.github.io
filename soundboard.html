@@ -86,8 +86,8 @@
         </div>
 
         <div class="col-md-4 col-xs-6">
-            <audio src="assets/soundboard/fightsong.mp3" id="ansley"></audio>
-            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('ansley').play()">Ansley DO NOT PLAY</button>
+            <audio src="" id="ansley"></audio>
+            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('ansley').play()">Ansley NO SONG</button>
 
             <audio src="assets/soundboard/rowmyboat.mp3" id="avaA"></audio>
             <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('avaA').play()">Ava A W/U</button>
@@ -97,8 +97,8 @@
             <audio src="assets/soundboard/brooke.mp3" id="brooke"></audio>
             <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('brooke').play()">Brooke H W/U</button>
 
-            <audio src="assets/soundboard/looseyourself.mp3" id="emmaD"></audio>
-            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('emmaD').play()">Emma D W/U</button>
+            <audio src="" id="emmaD"></audio>
+            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('emmaD').play()">Emma D NO SONG</button>
         </div>
 
         <div class="col-md-4 col-xs-6">
@@ -120,7 +120,7 @@ function fadeOut() {
     audios.forEach(audio => {
         if (!audio.paused) {
             let fadeAudio = setInterval(() => {
-                if (audio.volume > 0) {
+                if (audio.volume >= 0.1) {
                     audio.volume -= 0.1;
                 } else {
                     clearInterval(fadeAudio);
