@@ -115,46 +115,20 @@
 </footer>
 
 <script>
-let audioContext = new (window.AudioContext || window.webkitAudioContext)();
-let gainNodes = new Map();
-
 function fadeOut() {
-    document.querySelectorAll('audio').forEach(audio => {
+    const audios = document.querySelectorAll('audio');
+    audios.forEach(audio => {
         if (!audio.paused) {
-            // Ensure the AudioContext is running (needed for iOS)
-            if (audioContext.state === "suspended") {
-                audioContext.resume();
-            }
-
-            // Create a GainNode if it doesn't exist for this audio element
-            if (!gainNodes.has(audio)) {
-                const gainNode = audioContext.createGain();
-                const track = audioContext.createMediaElementSource(audio);
-                track.connect(gainNode);
-                gainNode.connect(audioContext.destination);
-                gainNodes.set(audio, { gainNode, track });
-            }
-
-            const { gainNode, track } = gainNodes.get(audio);
-
-            // Apply a smooth fade-out effect
-            gainNode.gain.setValueAtTime(1, audioContext.currentTime);
-            gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + 1); // 1-second fade-out
-
-            setTimeout(() => {
-                audio.pause();
-                audio.currentTime = 0; // Reset playback position
-                
-                // Disconnect track to allow replay
-                track.disconnect();
-                gainNode.disconnect();
-                gainNodes.delete(audio);
-            }, 1000);
+            let fadeAudio = setInterval(() => {
+                if (audio.volume >= 0.1) {
+                    audio.volume -= 0.1;
+                } else {
+                    clearInterval(fadeAudio);
+                    audio.pause();
+                    audio.volume = 1.0;
+                }
+            }, 200);
         }
     });
 }
-
-
-
-
 </script>
