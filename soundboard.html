@@ -51,8 +51,9 @@
 
         <div class="col-md-4 col-xs-6">
             <audio src="assets/soundboard/jeporady.mp3" id="jeporady"></audio>
-               <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('jeporady').play()">Jeporady Theme</button>
-       </div>
+            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('jeporady').play()">Jeopardy Theme</button>
+            <button type="button" class="btn btn-lg btn-block" onclick="fadeOut()">Fade Out</button>
+        </div>
 
        
        <br>
@@ -86,7 +87,7 @@
 
         <div class="col-md-4 col-xs-6">
             <audio src="assets/soundboard/fightsong.mp3" id="ansley"></audio>
-            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('ansley').play()">Ansley D W/U</button>
+            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('ansley').play()">Ansley DO NOT PLAY</button>
 
             <audio src="assets/soundboard/rowmyboat.mp3" id="avaA"></audio>
             <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('avaA').play()">Ava A W/U</button>
@@ -101,9 +102,6 @@
         </div>
 
         <div class="col-md-4 col-xs-6">
-            <audio src="assets/soundboard/youreadyforit.mp3" id="libbyW"></audio>
-            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('libbyW').play()">Libby W W/U</button>
-
             <audio src="assets/soundboard/addymae.mp3" id="addymae"></audio>
             <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('addymae').play()">Addymae W/U</button>
         </div>
@@ -115,3 +113,22 @@
 <footer>
     &copy; 2025 Shark Development Incorporated
 </footer>
+
+<script>
+function fadeOut() {
+    const audios = document.querySelectorAll('audio');
+    audios.forEach(audio => {
+        if (!audio.paused) {
+            let fadeAudio = setInterval(() => {
+                if (audio.volume > 0) {
+                    audio.volume -= 0.1;
+                } else {
+                    clearInterval(fadeAudio);
+                    audio.pause();
+                    audio.volume = 1.0;
+                }
+            }, 200);
+        }
+    });
+}
+</script>
