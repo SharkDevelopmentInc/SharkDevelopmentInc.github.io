@@ -116,19 +116,25 @@
 
 <script>
 function fadeOut() {
-    const audios = document.querySelectorAll('audio');
-    audios.forEach(audio => {
+    document.querySelectorAll('audio').forEach(audio => {
         if (!audio.paused) {
-            let fadeAudio = setInterval(() => {
-                if (audio.volume >= 0.1) {
-                    audio.volume -= 0.1;
-                } else {
-                    clearInterval(fadeAudio);
-                    audio.pause();
-                    audio.volume = 1.0;
-                }
-            }, 200);
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const source = audioContext.createMediaElementSource(audio);
+            const gainNode = audioContext.createGain();
+            
+            source.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+
+            gainNode.gain.setValueAtTime(1, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 1); // 1-second fade-out
+            
+            setTimeout(() => {
+                audio.pause();
+                audio.currentTime = 0; // Reset playback
+                audioContext.close(); // Clean up
+            }, 1000); // Ensure cleanup after fade-out
         }
     });
 }
+
 </script>
