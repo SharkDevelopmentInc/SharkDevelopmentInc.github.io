@@ -121,20 +121,26 @@ function fadeOut() {
             const audioContext = new (window.AudioContext || window.webkitAudioContext)();
             const source = audioContext.createMediaElementSource(audio);
             const gainNode = audioContext.createGain();
-            
+
             source.connect(gainNode);
             gainNode.connect(audioContext.destination);
 
+            // Ensure the audio context is resumed (needed for iOS)
+            if (audioContext.state === "suspended") {
+                audioContext.resume();
+            }
+
             gainNode.gain.setValueAtTime(1, audioContext.currentTime);
-            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 1); // 1-second fade-out
-            
+            gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + 1); // Smooth fade-out over 1 second
+
             setTimeout(() => {
                 audio.pause();
-                audio.currentTime = 0; // Reset playback
-                audioContext.close(); // Clean up
+                audio.currentTime = 0; // Reset playback position
+                audioContext.close(); // Cleanup
             }, 1000); // Ensure cleanup after fade-out
         }
     });
 }
+
 
 </script>
