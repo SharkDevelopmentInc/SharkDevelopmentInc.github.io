@@ -6,7 +6,7 @@ def download(term, name):
 
     url = search_youtube_video(term, name)
 
-    output_path = './temp/soundboard'
+    output_path = './assets/soundboard'
     ydl_opts = {
         'format': 'bestaudio/best',
         'extractaudio': True,
@@ -43,6 +43,6 @@ def search_youtube_video(query, name, max_results=1):
         return None
 
 
-download('Holding out for a hero', 'hero')
-download('Duel of the Fates', 'duel')
-download('Kung Fu Fighting', 'kungfu')
+download('The Power by Snap', 'emmaw')
+download('Down with the sickness', 'emmyt')
+download('Gossip by Maneskin', 'libby')
