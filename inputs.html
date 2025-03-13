@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Query Parameters</title>
+    <script>
+        function displayQueryParams() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const name = urlParams.get('name');
+            const text = urlParams.get('text');
+            document.getElementById('name').textContent = name ? name : 'Name not provided';
+            document.getElementById('text').textContent = text ? text : 'Text not provided';
+        }
+    </script>
+</head>
+<body onload="displayQueryParams()">
+    <h1>Query Parameters</h1>
+    <p><strong>Name:</strong> <span id="name"></span></p>
+    <p><strong>Text:</strong> <span id="text"></span></p>
+</body>
+</html>
