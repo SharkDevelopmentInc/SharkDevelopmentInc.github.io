@@ -51,8 +51,9 @@
 
         <div class="col-md-4 col-xs-6">
             <audio src="assets/soundboard/jeporady.mp3" id="jeporady"></audio>
-               <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('jeporady').play()">Jeporady Theme</button>
-       </div>
+            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('jeporady').play()">Jeopardy Theme</button>
+            <button type="button" class="btn btn-lg btn-block" onclick="fadeOut()">Fade Out</button>
+        </div>
 
        
        <br>
@@ -64,47 +65,45 @@
             <audio src="assets/soundboard/madi.mp3" id="madi"></audio>
             <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('madi').play()">Madi W/U</button>
 
-            <audio src="assets/soundboard/charlie.mp3" id="Charlie"></audio>
-            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('Charlie').play()">Charlie W/U</button>
+            <audio src="assets/soundboard/ava.mp3" id="ava"></audio>
+            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('ava').play()">Ava W/U</button>
         </div>
 
         <div class="col-md-4 col-xs-6">
-            <audio src="assets/soundboard/emily.mp3" id="Emily"></audio>
-            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('Emily').play()">Emily W/U</button>
+            <audio src="assets/soundboard/libby.wav" id="libby"></audio>
+            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('libby').play()">Libby W/U</button>
 
-            <audio src="assets/soundboard/evelyn.mp3" id="Evelyn"></audio>
-            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('Evelyn').play()">Evelyn W/U</button>
+            <audio src="assets/soundboard/emmyt.wav" id="emmy"></audio>
+            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('emmy').play()">Emmy T W/U</button>
         </div>
 
         <div class="col-md-4 col-xs-6">
-            <audio src="assets/soundboard/layla.mp3" id="layla"></audio>
-            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('layla').play()">Layla W/U</button>
+            <audio src="assets/soundboard/emmaw.wav" id="emmaw"></audio>
+            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('emmaw').play()">Emma W W/U</button>
 
-            <audio src="assets/soundboard/molly.mp3" id="Molly"></audio>
-            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('Molly').play()">Molly W/U</button>
+            <audio src="assets/soundboard/thisgirlisonfire.mp3" id="hayden"></audio>
+            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('hayden').play()">Hayden E W/U</button>
         </div>
 
         <div class="col-md-4 col-xs-6">
-            <audio src="assets/soundboard/universal.mp3" id="Kate"></audio>
-            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('Kate').play()">Kate W/U</button>
+            <audio src="" id="ansley"></audio>
+            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('ansley').play()">Ansley NO SONG</button>
 
-            <audio src="assets/soundboard/emma.mp3" id="Emma"></audio>
-            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('Emma').play()">Emma W/U</button>
+            <audio src="assets/soundboard/rowmyboat.mp3" id="avaA"></audio>
+            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('avaA').play()">Ava A W/U</button>
         </div>
 
         <div class="col-md-4 col-xs-6">
-            <audio src="assets/soundboard/emmy.mp3" id="Emmy"></audio>
-            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('Emmy').play()">Emmy W/U</button>
+            <audio src="assets/soundboard/brooke.mp3" id="brooke"></audio>
+            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('brooke').play()">Brooke H W/U</button>
 
+            <audio src="" id="emmaD"></audio>
+            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('emmaD').play()">Emma D NO SONG</button>
+        </div>
+
+        <div class="col-md-4 col-xs-6">
             <audio src="assets/soundboard/addymae.mp3" id="addymae"></audio>
-            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('addymae').play()">Addy Mae W/U</button>
-        </div>
-
-        
-        <div class="col-md-4 col-xs-6">
-            <audio src="assets/soundboard/ava.mp3" id="Ava"></audio>
-            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('Ava').play()">Ava W/U</button>
-
+            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('addymae').play()">Addymae W/U</button>
         </div>
 
     </div>
@@ -112,5 +111,24 @@
 </div>
 
 <footer>
-    &copy; 2024 Shark Development Incorporated
+    &copy; 2025 Shark Development Incorporated
 </footer>
+
+<script>
+function fadeOut() {
+    const audios = document.querySelectorAll('audio');
+    audios.forEach(audio => {
+        if (!audio.paused) {
+            let fadeAudio = setInterval(() => {
+                if (audio.volume >= 0.1) {
+                    audio.volume -= 0.1;
+                } else {
+                    clearInterval(fadeAudio);
+                    audio.pause();
+                    audio.volume = 1.0;
+                }
+            }, 200);
+        }
+    });
+}
+</script>
