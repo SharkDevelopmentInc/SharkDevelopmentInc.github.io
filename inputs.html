@@ -3,20 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Display Query Parameters</title>
+    <title>Form Processing</title>
     <script>
         function displayQueryParams() {
             const urlParams = new URLSearchParams(window.location.search);
-            const name = urlParams.get('name');
-            const text = urlParams.get('text');
-            document.getElementById('name').textContent = name ? name : 'Name not provided';
-            document.getElementById('text').textContent = text ? text : 'Text not provided';
+            const paramsContainer = document.getElementById('params');
+            paramsContainer.innerHTML = '';
+            urlParams.forEach((value, key) => {
+                const capitalizedKey = key.charAt(0).toUpperCase() + key.slice(1);
+                const paramElement = document.createElement('p');
+                paramElement.innerHTML = `<strong>${capitalizedKey}:</strong> ${value}`;
+                paramsContainer.appendChild(paramElement);
+            });
         }
     </script>
 </head>
 <body onload="displayQueryParams()">
     <h1>Query Parameters</h1>
-    <p><strong>Name:</strong> <span id="name"></span></p>
-    <p><strong>Text:</strong> <span id="text"></span></p>
+    <div id="params"></div>
 </body>
 </html>
