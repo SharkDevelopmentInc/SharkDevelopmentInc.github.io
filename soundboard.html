@@ -76,34 +76,44 @@ const context = new (window.AudioContext || window.webkitAudioContext)();
 const gainNode = context.createGain();
 gainNode.connect(context.destination);
 let currentSource = null;
+const audioBuffers = {};
 
 gainNode.gain.value = 1;
+
+async function preloadSounds() {
+    const soundIds = ['charge.mp3', 'Coin.mp3', 'courseclear.mp3', 'GameOver.mp3', 'pacman.mp3', 'strikeout.mp3', 'bestshot.mp3', 'allidoiswin.mp3', 'hotdog.mp3', 'foul.mp3', 'jeporady.mp3', 'madi.mp3', 'ava.mp3', 'libby.wav', 'emmyt.wav', 'emmaw.wav', 'thisgirlisonfire.mp3', 'ansley', 'rowmyboat.mp3', 'brooke.mp3', 'emmaD', 'addymae.mp3'];
+    for (const id of soundIds) {
+        const url = `assets/soundboard/${id}`; // Use the ID directly as the file name
+        const response = await fetch(url);
+        const audioData = await response.arrayBuffer();
+        audioBuffers[id] = await context.decodeAudioData(audioData);
+    }
+}
 
 async function playSound(id) {
     if (currentSource) {
         fadeOut();
     }
     
-    const url = `/assets/soundboard/${id}`;
-    const response = await fetch(url);
-    const audioData = await response.arrayBuffer();
-    const buffer = await context.decodeAudioData(audioData);
+    if (!audioBuffers[id]) return;
     
     currentSource = context.createBufferSource();
-    currentSource.buffer = buffer;
+    currentSource.buffer = audioBuffers[id];
     currentSource.connect(gainNode);
     currentSource.start(0);
 }
 
+document.addEventListener("DOMContentLoaded", preloadSounds);
+
 function fadeOut() {
     if (!currentSource) return;
     
-    const fadeTime = context.currentTime + 2.5; // 2.5 seconds fade out
+    const fadeTime = context.currentTime + 3; // 3 seconds fade out
     gainNode.gain.linearRampToValueAtTime(0, fadeTime);
     setTimeout(() => {
         currentSource.stop();
         currentSource = null;
         gainNode.gain.value = 1;
-    }, 2500); // Wait for fade out to finish before stopping
+    }, 3000); // Wait for fade out to finish before stopping
 }
 </script>
