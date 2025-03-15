@@ -1,4 +1,4 @@
-<title>Softbal soundboard</title>
+<title>Softball Soundboard</title>
 <link href="./cssfolder/soundboard.css" rel="stylesheet" />
 <div class="container">
 
@@ -7,89 +7,66 @@
     </div>
 
     <div class="row">
-
         <div class="col-md-4 col-xs-6">
-            <audio src="assets/soundboard/charge.mp3" id="charge"></audio>
-            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('charge').play()">Charge!!!</button>
-
-            <audio src="assets/soundboard/Coin.mp3" id="coin"></audio>
-            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('coin').play()">Coin</button>
+            <button type="button" class="btn btn-lg btn-block" onclick="playSound('charge.mp3')">Charge!!!</button>
+            <button type="button" class="btn btn-lg btn-block" onclick="playSound('coin.mp3')">Coin</button>
         </div>
 
         <div class="col-md-4 col-xs-6">
-            <audio src="assets/soundboard/courseclear.mp3" id="courseclear"></audio>
-            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('courseclear').play()">Stage Clear!</button>
-
-            <audio src="assets/soundboard/GameOver.mp3" id="GameOver"></audio>
-            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('GameOver').play()">Game over!</button>
+            <button type="button" class="btn btn-lg btn-block" onclick="playSound('courseclear.mp3')">Stage Clear!</button>
+            <button type="button" class="btn btn-lg btn-block" onclick="playSound('GameOver.mp3')">Game over!</button>
         </div>
 
         <div class="col-md-4 col-xs-6">
-            <audio src="assets/soundboard/pacman.mp3" id="pacman"></audio>
-            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('pacman').play()">Pac-Man Game Over</button>
-
-            <audio src="assets/soundboard/strikeout.mp3" id="strikeout"></audio>
-            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('strikeout').play()">Strikeout sound</button>
+            <button type="button" class="btn btn-lg btn-block" onclick="playSound('pacman.mp3')">Pac-Man Game Over</button>
+            <button type="button" class="btn btn-lg btn-block" onclick="playSound('strikeout.mp3')">Strikeout sound</button>
         </div>
 
         <div class="col-md-4 col-xs-6">
-             <audio src="assets/soundboard/bestshot.mp3" id="bestshot"></audio>
-                <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('bestshot').play()">Hit me with ur best shot</button>
-    
-            <audio src="assets/soundboard/allidoiswin.mp3" id="allidoiswin"></audio>
-            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('allidoiswin').play()">All I do is Win</button> 
+            <button type="button" class="btn btn-lg btn-block" onclick="playSound('bestshot.mp3')">Hit me with ur best shot</button>
+            <button type="button" class="btn btn-lg btn-block" onclick="playSound('allidoiswin.mp3')">All I do is Win</button> 
         </div>
 
         <div class="col-md-4 col-xs-6">
-            <audio src="assets/soundboard/bestshot.mp3" id="hotdog"></audio>
-               <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('hotdog').play()">hotdog W/U</button>
-   
-           <audio src="assets/soundboard/foul.mp3" id="foul"></audio>
-           <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('foul').play()">Foul Ball</button> 
-       </div>
+            <button type="button" class="btn btn-lg btn-block" onclick="playSound('hotdog.mp3')">hotdog W/U</button>
+            <button type="button" class="btn btn-lg btn-block" onclick="playSound('foul.mp3')">Foul Ball</button> 
+        </div>
 
         <div class="col-md-4 col-xs-6">
-            <audio src="assets/soundboard/jeporady.mp3" id="jeporady"></audio>
-            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('jeporady').play()">Jeopardy Theme</button>
+            <button type="button" class="btn btn-lg btn-block" onclick="playSound('jeporady.mp3')">Jeopardy Theme</button>
             <button type="button" class="btn btn-lg btn-block" onclick="fadeOut()">Fade Out</button>
         </div>
 
-       <br>
-       <br>
-       <br>
+        <br><br><br>
 
         <div class="col-md-4 col-xs-6">
-            <audio src="assets/soundboard/madi.mp3" id="madi"></audio>
-            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('madi').play()">Madi W/U</button>
-
-            <audio src="assets/soundboard/ava.mp3" id="ava"></audio>
-            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('ava').play()">Ava W/U</button>
+            <button type="button" class="btn btn-lg btn-block" onclick="playSound('madi.mp3')">Madi W/U</button>
+            <button type="button" class="btn btn-lg btn-block" onclick="playSound('ava.mp3')">Ava W/U</button>
         </div>
 
         <div class="col-md-4 col-xs-6">
-            <audio src="assets/soundboard/libby.wav" id="libby"></audio>
-            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('libby').play()">Libby W/U</button>
-
-            <audio src="assets/soundboard/emmyt.wav" id="emmy"></audio>
-            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('emmy').play()">Emmy T W/U</button>
+            <button type="button" class="btn btn-lg btn-block" onclick="playSound('libby.wav')">Libby W/U</button>
+            <button type="button" class="btn btn-lg btn-block" onclick="playSound('emmyt.wav')">Emmy T W/U</button>
         </div>
 
         <div class="col-md-4 col-xs-6">
-            <audio src="assets/soundboard/emmaw.wav" id="emmaw"></audio>
-            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('emmaw').play()">Emma W W/U</button>
-
-            <audio src="assets/soundboard/thisgirlisonfire.mp3" id="hayden"></audio>
-            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('hayden').play()">Hayden E W/U</button>
+            <button type="button" class="btn btn-lg btn-block" onclick="playSound('emmaw.wav')">Emma W W/U</button>
+            <button type="button" class="btn btn-lg btn-block" onclick="playSound('thisgirlisonfire.mp3')">Hayden E W/U</button>
         </div>
 
         <div class="col-md-4 col-xs-6">
-            <audio src="" id="ansley"></audio>
-            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('ansley').play()">Ansley NO SONG</button>
-
-            <audio src="assets/soundboard/rowmyboat.mp3" id="avaA"></audio>
-            <button type="button" class="btn btn-lg btn-block" onclick="document.getElementById('avaA').play()">Ava A W/U</button>
+            <button type="button" class="btn btn-lg btn-block" >Ansley NO SONG</button>
+            <button type="button" class="btn btn-lg btn-block" onclick="playSound('avaA')">Ava A W/U</button>
         </div>
 
+        <div class="col-md-4 col-xs-6">
+            <button type="button" class="btn btn-lg btn-block" onclick="playSound('brooke.mp3')">Brooke H W/U</button>
+            <button type="button" class="btn btn-lg btn-block">Emma D NO SONG</button>
+        </div>
+
+        <div class="col-md-4 col-xs-6">
+            <button type="button" class="btn btn-lg btn-block" onclick="playSound('addymae.mp3')">Addymae W/U</button>
+        </div>
     </div>
 </div>
 
@@ -98,22 +75,38 @@
 </footer>
 
 <script>
+const context = new (window.AudioContext || window.webkitAudioContext)();
+const gainNode = context.createGain();
+gainNode.connect(context.destination);
+let currentSource = null;
+
+gainNode.gain.value = 1;
+
+async function playSound(id) {
+    if (currentSource) {
+        fadeOut();
+    }
+    
+    const url = `https://SharkDevelopmentInc.github.io/assets/soundboard/${id}`;
+    const response = await fetch(url);
+    const audioData = await response.arrayBuffer();
+    const buffer = await context.decodeAudioData(audioData);
+    
+    currentSource = context.createBufferSource();
+    currentSource.buffer = buffer;
+    currentSource.connect(gainNode);
+    currentSource.start(0);
+}
+
 function fadeOut() {
-    document.querySelectorAll('audio').forEach(audio => {
-        if (!audio.paused) {
-            let vol = audio.volume;
-            let intervalID = setInterval(() => {
-                if (vol > 0) {
-                    vol -= 0.1;
-                    audio.volume = Math.max(vol, 0).toFixed(2);
-                } else {
-                    clearInterval(intervalID);
-                    audio.pause();
-                    audio.currentTime = 0;
-                    audio.volume = 1.0;
-                }
-            }, 200);
-        }
-    });
+    if (!currentSource) return;
+    
+    const fadeTime = context.currentTime + 3;
+    gainNode.gain.linearRampToValueAtTime(0, fadeTime);
+    setTimeout(() => {
+        currentSource.stop();
+        currentSource = null;
+        gainNode.gain.value = 1;
+    }, 3000);
 }
 </script>
