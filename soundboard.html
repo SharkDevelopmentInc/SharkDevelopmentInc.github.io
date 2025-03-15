@@ -116,15 +116,17 @@
 
 <script>
 function fadeOut() {
-    const audios = document.querySelectorAll('audio');
-    audios.forEach(audio => {
+    document.querySelectorAll('audio').forEach(audio => {
         if (!audio.paused) {
-            let fadeAudio = setInterval(() => {
-                if (audio.volume >= 0.1) {
-                    audio.volume -= 0.1;
+            let vol = audio.volume;
+            let intervalID = setInterval(() => {
+                if (vol > 0) {
+                    vol -= 0.1;
+                    audio.volume = Math.max(vol, 0).toFixed(2);
                 } else {
-                    clearInterval(fadeAudio);
+                    clearInterval(intervalID);
                     audio.pause();
+                    audio.currentTime = 0;
                     audio.volume = 1.0;
                 }
             }, 200);
