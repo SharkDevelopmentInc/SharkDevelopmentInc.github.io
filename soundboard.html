@@ -84,7 +84,7 @@ async function playSound(id) {
         fadeOut();
     }
     
-    const url = `https://SharkDevelopmentInc.github.io/assets/soundboard/${id}`;
+    const url = `/assets/soundboard/${id}`;
     const response = await fetch(url);
     const audioData = await response.arrayBuffer();
     const buffer = await context.decodeAudioData(audioData);
