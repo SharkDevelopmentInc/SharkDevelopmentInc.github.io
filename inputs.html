@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Processing</title>
+    <script>
+        function displayQueryParams() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const paramsContainer = document.getElementById('params');
+            paramsContainer.innerHTML = '';
+            urlParams.forEach((value, key) => {
+                const capitalizedKey = key.charAt(0).toUpperCase() + key.slice(1);
+                const paramElement = document.createElement('p');
+                paramElement.innerHTML = `<strong>${capitalizedKey}:</strong> ${value}`;
+                paramsContainer.appendChild(paramElement);
+            });
+        }
+    </script>
+</head>
+<body onload="displayQueryParams()">
+    <h1>Form Processing</h1>
+    <div id="params"></div>
+</body>
+</html>
